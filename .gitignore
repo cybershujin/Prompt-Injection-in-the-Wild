@@ -1,8 +1,14 @@
-# The public repo tracks ONLY the tracker + generator + workflow.
-# The research/sweep tooling and local scratch stay out.
+# The public repo tracks the tracker + generator + workflow, PLUS the monthly
+# sweep skill (so the cloud routine that clones this repo can run it).
 
-# Local Claude Code config + sweep skill (not part of the published tracker)
-.claude/
+# Local Claude config is ignored EXCEPT the sweep skill directory.
+.claude/*
+!.claude/skills/
+.claude/skills/*
+!.claude/skills/update-prompt-injection-tracker/
+.claude/skills/update-prompt-injection-tracker/__pycache__/
+
+# Never commit the local MCP config (it references the Perplexity API key env var)
 .mcp.json
 
 # Perplexity sweep intermediates and drafts

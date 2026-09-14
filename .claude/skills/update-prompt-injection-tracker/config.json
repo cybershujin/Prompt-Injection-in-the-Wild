@@ -1,0 +1,56 @@
+{
+  "repo": { "owner": "cybershujin", "name": "Prompt-Injection-in-the-Wild", "base_branch": "main" },
+
+  "schedule": {
+    "_comment": "Monthly sweep. A cloud routine fires on the configured day each month; monthly cadence is directly cron-expressible, so monthly_gate.py is a light safety net, not a biweekly-style gate.",
+    "run_day_of_month": 1,
+    "timezone": "America/New_York",
+    "run_hour_local": 9
+  },
+
+  "budget": {
+    "_comment": "per_run is the normal monthly sweep. backfill is the one-time 2-year seeding run (larger).",
+    "per_run_usd": 14.0,
+    "backfill_usd": 40.0,
+    "dashboard_monthly_cap_usd": 30.0,
+    "model": "sonar-deep-research",
+    "reasoning_effort": "high"
+  },
+
+  "trusted_sources": {
+    "_comment": "Domains that BYPASS the vetting/skeptic gate (still deduped + bias-flagged). Everything else is scrutinized. Match is by substring on the source host. Tuned for the prompt-injection research space; the maintainer adjusts over time.",
+    "domains": [
+      "anthropic.com", "openai.com", "cloud.google.com", "blog.google", "deepmind.google", "googleblog.com",
+      "microsoft.com", "msrc.microsoft.com",
+      "embracethered.com", "simonwillison.net", "schneier.com",
+      "hiddenlayer.com", "lakera.ai", "robustintelligence.com", "trailofbits.com", "blog.trailofbits.com",
+      "portswigger.net", "owasp.org", "genai.owasp.org",
+      "nvidia.com", "developer.nvidia.com", "research.nvidia.com",
+      "crowdstrike.com", "unit42.paloaltonetworks.com", "paloaltonetworks.com",
+      "ncsc.gov.uk", "cisa.gov", "nist.gov",
+      "aim.security", "promptarmor.com", "invariantlabs.ai", "arxiv.org"
+    ],
+    "labels": ["Anthropic","OpenAI","Google","Microsoft/MSRC","Embrace The Red (Rehberger)","Simon Willison","Bruce Schneier","HiddenLayer","Lakera","Robust Intelligence","Trail of Bits","PortSwigger","OWASP","NVIDIA AI Red Team","CrowdStrike","Palo Alto Unit 42","NCSC","CISA","NIST","Aim Labs","PromptArmor","Invariant Labs","arXiv (preprint — cite with caution)"]
+  },
+
+  "frontier_provider_domains": {
+    "_comment": "Provider security/red-team writeups that often disclose MANY techniques at once. When a candidate traces back to one of these, fetch the primary and enumerate every technique it describes.",
+    "domains": [
+      "anthropic.com", "openai.com", "cloud.google.com", "blog.google", "deepmind.google",
+      "googleblog.com", "microsoft.com", "msrc.microsoft.com"
+    ]
+  },
+
+  "spam_denylist": {
+    "_comment": "Optional: pure SEO/aggregator hosts to exclude at retrieval. Keep short; retrieval is otherwise a wide net.",
+    "domains": []
+  },
+
+  "recurring_sources_to_enumerate_every_run": [
+    "Embrace The Red (embracethered.com) — Johann Rehberger's ongoing prompt-injection disclosures",
+    "OWASP GenAI / LLM Top 10 updates",
+    "Microsoft MSRC / AI Red Team prompt-injection writeups",
+    "Google (GTIG / DeepMind / Project Zero) LLM-security posts",
+    "Simon Willison's prompt-injection tag"
+  ]
+}
