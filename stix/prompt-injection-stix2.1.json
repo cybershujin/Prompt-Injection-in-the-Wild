@@ -1,0 +1,2510 @@
+{
+  "type": "bundle",
+  "id": "bundle--ce7a4f15-6dd5-5389-ac42-ef5db33b64a4",
+  "objects": [
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--0bafc0c6-af33-5e5a-9d1d-97d0c197d298",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "Amazon Q Developer wiper prompt",
+      "description": "An attacker merged a PR into the Amazon Q Developer extension planting a prompt instructing the assistant to wipe local files and AWS resources; it shipped in v1.84.0 before removal (reportedly would not execute due to formatting). Verified via aggregated reporting; primary source not directly confirmed.",
+      "external_references": [
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0051.001",
+          "url": "https://atlas.mitre.org/techniques/AML.T0051.001"
+        },
+        {
+          "source_name": "scworld.com",
+          "url": "https://www.scworld.com/news/amazon-q-extension-for-vs-code-reportedly-injected-with-wiper-prompt"
+        }
+      ],
+      "x_pi_vetting": "Not fully vetted",
+      "confidence": 15,
+      "x_pi_delivery_method": [
+        "Code / repository content"
+      ],
+      "x_pi_confirmed_models": [
+        "Amazon Q Developer (VS Code extension)"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--0e694b90-1381-5624-b2b5-2e06b75b20b6",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "Gemini memory persistence (delayed tool invocation)",
+      "description": "A malicious uploaded document poisons the chat so that when the user later says a trigger word, Gemini invokes its memory tool \"on the user's behalf\" (\"delayed tool invocation\") and writes attacker-chosen false long-term memories that persist across future sessions.",
+      "external_references": [
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0051.001",
+          "url": "https://atlas.mitre.org/techniques/AML.T0051.001"
+        },
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0053",
+          "url": "https://atlas.mitre.org/techniques/AML.T0053"
+        },
+        {
+          "source_name": "Embrace The Red",
+          "url": "https://embracethered.com/blog/posts/2025/gemini-memory-persistence-prompt-injection/"
+        }
+      ],
+      "x_pi_vetting": "Confirmed",
+      "confidence": 85,
+      "x_pi_delivery_method": [
+        "Indirect – document / file"
+      ],
+      "x_pi_propagation": [
+        "Persists in agent / project memory",
+        "Cross-agent / cross-session"
+      ],
+      "x_pi_confirmed_models": [
+        "Gemini Advanced"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--135c1f3f-d80f-5dac-aebc-68cdf2e72532",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "Rules File Backdoor (Cursor / Copilot)",
+      "description": "Invisible-Unicode instructions hidden in AI coding \"rules\"/config files silently steer Cursor and GitHub Copilot to insert backdoors into generated code, with nothing shown in chat or logs; the hidden characters are invisible even in GitHub's PR-review view.",
+      "external_references": [
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0051.001",
+          "url": "https://atlas.mitre.org/techniques/AML.T0051.001"
+        },
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0068",
+          "url": "https://atlas.mitre.org/techniques/AML.T0068"
+        },
+        {
+          "source_name": "pillar.security",
+          "url": "https://www.pillar.security/blog/new-vulnerability-in-github-copilot-and-cursor-how-hackers-can-weaponize-code-agents"
+        }
+      ],
+      "x_pi_vetting": "Confirmed",
+      "confidence": 85,
+      "x_pi_delivery_method": [
+        "Code / repository content"
+      ],
+      "x_pi_encoding": [
+        "Zero-width characters",
+        "Unicode tag characters (invisible)"
+      ],
+      "x_pi_propagation": [
+        "Spreads via shared config / rules files"
+      ],
+      "x_pi_confirmed_models": [
+        "Cursor",
+        "GitHub Copilot"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--255d681a-faf4-5ea7-b25b-d0fb726abd32",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "MCP line jumping",
+      "description": "Because MCP clients load every tool description into the model's context as soon as a server is listed, a malicious description can alter model behavior before any tool is invoked, bypassing the user's tool-call approval step.",
+      "external_references": [
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0051.001",
+          "url": "https://atlas.mitre.org/techniques/AML.T0051.001"
+        },
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0053",
+          "url": "https://atlas.mitre.org/techniques/AML.T0053"
+        },
+        {
+          "source_name": "Trail of Bits",
+          "url": "https://blog.trailofbits.com/2025/04/21/jumping-the-line-how-mcp-servers-can-attack-you-before-you-ever-use-them/"
+        }
+      ],
+      "x_pi_vetting": "Confirmed",
+      "confidence": 85,
+      "x_pi_delivery_method": [
+        "MCP server / connection"
+      ],
+      "x_pi_confirmed_models": [
+        "Claude Desktop"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--26ab0bae-e83f-5526-b915-9241628092d0",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "ChatGPT Atlas omnibox injection",
+      "description": "A string that looks like a URL but fails URL parsing makes Atlas's omnibox treat the embedded text as a trusted prompt; pasted or delivered behind a \"Copy link\" button, it can drive the agent to visit attacker sites or delete Google Drive files in the user's authenticated session.",
+      "external_references": [
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0051.000",
+          "url": "https://atlas.mitre.org/techniques/AML.T0051.000"
+        },
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0051.001",
+          "url": "https://atlas.mitre.org/techniques/AML.T0051.001"
+        },
+        {
+          "source_name": "neuraltrust.ai",
+          "url": "https://neuraltrust.ai/blog/openai-atlas-omnibox-prompt-injection"
+        }
+      ],
+      "x_pi_vetting": "Confirmed",
+      "confidence": 85,
+      "x_pi_delivery_method": [
+        "Direct prompt",
+        "Indirect – website / HTML"
+      ],
+      "x_pi_confirmed_models": [
+        "ChatGPT Atlas"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--2fb37f98-df39-5078-85af-245a9ce0be0f",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "Hidden prompt injection against Claude (Unicode tags)",
+      "description": "Claude interpreted invisible Unicode tag code points pasted into its interface — the same hidden-instruction behavior shown against ChatGPT. Anthropic reviewed and marked it \"Not Applicable\" (no identified security impact), but the interpretation behavior was demonstrated.",
+      "external_references": [
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0051.000",
+          "url": "https://atlas.mitre.org/techniques/AML.T0051.000"
+        },
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0068",
+          "url": "https://atlas.mitre.org/techniques/AML.T0068"
+        },
+        {
+          "source_name": "Embrace The Red",
+          "url": "https://embracethered.com/blog/posts/2024/claude-hidden-prompt-injection-ascii-smuggling/"
+        }
+      ],
+      "x_pi_vetting": "Confirmed",
+      "confidence": 85,
+      "x_pi_delivery_method": [
+        "Direct prompt"
+      ],
+      "x_pi_encoding": [
+        "Unicode tag characters (invisible)"
+      ],
+      "x_pi_confirmed_models": [
+        "Anthropic Claude"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--31a4ce71-264a-5c44-a193-25f4b09f6611",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "CurXecute (Cursor RCE via MCP)",
+      "description": "CVE-2025-54135: a prompt injection delivered via an external MCP data source (e.g. a Slack message returned through a tool) makes Cursor rewrite its own mcp.json, and auto-run executes the attacker's command with no approval. Primary Aim Labs page was unreachable at verification; corroborated by secondary reporting.",
+      "external_references": [
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0051.001",
+          "url": "https://atlas.mitre.org/techniques/AML.T0051.001"
+        },
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0053",
+          "url": "https://atlas.mitre.org/techniques/AML.T0053"
+        },
+        {
+          "source_name": "catonetworks.com",
+          "url": "https://www.catonetworks.com/blog/curxecute-rce/"
+        }
+      ],
+      "x_pi_vetting": "Not fully vetted",
+      "confidence": 15,
+      "x_pi_delivery_method": [
+        "Tool-call / function result"
+      ],
+      "x_pi_propagation": [
+        "Moves through tool-call chain"
+      ],
+      "x_pi_confirmed_models": [
+        "Cursor (fixed v1.3)"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--482f3092-1862-579b-939e-fb37c006e5a4",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "Google Bard markdown-image exfiltration",
+      "description": "An indirect prompt injection in a shared Google Doc made Bard emit a markdown image whose URL embedded the user's chat data; the client auto-loaded the image, exfiltrating data with no user interaction. One of the first zero-click LLM exfiltration cases; fixed Oct 2023.",
+      "external_references": [
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0051.001",
+          "url": "https://atlas.mitre.org/techniques/AML.T0051.001"
+        },
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0057",
+          "url": "https://atlas.mitre.org/techniques/AML.T0057"
+        },
+        {
+          "source_name": "Embrace The Red",
+          "url": "https://embracethered.com/blog/posts/2023/google-bard-data-exfiltration/"
+        }
+      ],
+      "x_pi_vetting": "Confirmed",
+      "confidence": 85,
+      "x_pi_delivery_method": [
+        "Indirect – document / file",
+        "Indirect – email"
+      ],
+      "x_pi_confirmed_models": [
+        "Google Bard"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--502de093-d3a5-5713-a6c3-fda3d8e572d3",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "Character-injection guardrail evasion",
+      "description": "Systematic study: non-printing zero-width characters, homoglyph substitution and emoji variation-selector smuggling evade commercial prompt-injection/jailbreak guardrail classifiers (the confirmed targets are the detection systems, not the LLMs); zero-width averaged 44–76% evasion, emoji smuggling highest.",
+      "external_references": [
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0068",
+          "url": "https://atlas.mitre.org/techniques/AML.T0068"
+        },
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0051",
+          "url": "https://atlas.mitre.org/techniques/AML.T0051"
+        },
+        {
+          "source_name": "arXiv",
+          "url": "https://arxiv.org/html/2504.11168v1"
+        }
+      ],
+      "x_pi_vetting": "Confirmed",
+      "confidence": 85,
+      "x_pi_delivery_method": [
+        "Direct prompt"
+      ],
+      "x_pi_encoding": [
+        "Zero-width characters",
+        "Homoglyphs",
+        "Emoji / variation-selector smuggling",
+        "Multi-layer"
+      ],
+      "x_pi_confirmed_models": [
+        "Azure Prompt Shield",
+        "Meta Prompt Guard",
+        "ProtectAI Prompt Injection v1/v2",
+        "NVIDIA NeMo Guard",
+        "Vijil"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--54bc1846-b6b9-52fd-a913-16dda040b830",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "Unseeable screenshot-OCR injection",
+      "description": "Prompt-injection instructions rendered as near-invisible low-contrast text inside on-page images are recovered by an AI browser's OCR when it processes a screenshot, so a human sees nothing while the agent obeys. Demonstrated across multiple agentic browsers.",
+      "external_references": [
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0051.001",
+          "url": "https://atlas.mitre.org/techniques/AML.T0051.001"
+        },
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0068",
+          "url": "https://atlas.mitre.org/techniques/AML.T0068"
+        },
+        {
+          "source_name": "brave.com",
+          "url": "https://brave.com/blog/unseeable-prompt-injections/"
+        }
+      ],
+      "x_pi_vetting": "Confirmed",
+      "confidence": 85,
+      "x_pi_delivery_method": [
+        "Multimodal – image"
+      ],
+      "x_pi_confirmed_models": [
+        "Perplexity Comet",
+        "Fellou",
+        "Opera Neon"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--6a8d8242-ad07-57bc-9f85-db399fbd4469",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "SpAIware (ChatGPT memory)",
+      "description": "Prompt injection from untrusted web/document content writes a persistent instruction into ChatGPT's long-term Memory, causing continuous exfiltration (via rendered image URLs) of everything the user types or receives in all future sessions until the memory is removed.",
+      "external_references": [
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0051.001",
+          "url": "https://atlas.mitre.org/techniques/AML.T0051.001"
+        },
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0057",
+          "url": "https://atlas.mitre.org/techniques/AML.T0057"
+        },
+        {
+          "source_name": "Embrace The Red",
+          "url": "https://embracethered.com/blog/posts/2024/chatgpt-macos-app-persistent-data-exfiltration/"
+        }
+      ],
+      "x_pi_vetting": "Confirmed",
+      "confidence": 85,
+      "x_pi_delivery_method": [
+        "Indirect – website / HTML",
+        "Indirect – document / file"
+      ],
+      "x_pi_propagation": [
+        "Persists in agent / project memory",
+        "Cross-agent / cross-session"
+      ],
+      "x_pi_confirmed_models": [
+        "ChatGPT (macOS app)"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--75397482-162e-59f2-a74c-50c404c7d7a9",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "Slack AI indirect injection exfiltration",
+      "description": "An attacker plants instructions in a public Slack channel; Slack AI ingests them into its RAG pipeline, and when a victim later queries it, the injected instruction renders a markdown link smuggling private-channel data (e.g. an API key) into the URL to the attacker.",
+      "external_references": [
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0051.001",
+          "url": "https://atlas.mitre.org/techniques/AML.T0051.001"
+        },
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0057",
+          "url": "https://atlas.mitre.org/techniques/AML.T0057"
+        },
+        {
+          "source_name": "promptarmor.com",
+          "url": "https://www.promptarmor.com/resources/data-exfiltration-from-slack-ai-via-indirect-prompt-injection"
+        }
+      ],
+      "x_pi_vetting": "Confirmed",
+      "confidence": 85,
+      "x_pi_delivery_method": [
+        "Indirect – RAG / retrieved content"
+      ],
+      "x_pi_propagation": [
+        "Poisons shared data store / RAG"
+      ],
+      "x_pi_confirmed_models": [
+        "Slack AI"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--754f1ca3-5e36-51f6-b36b-4e9e0a03b2cc",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "Perplexity Comet Reddit injection",
+      "description": "Summarizing a Reddit page whose comment hid instructions behind a spoiler tag caused the Comet browser to read the user's email and a Gmail OTP from authenticated sessions and exfiltrate them by replying to the comment.",
+      "external_references": [
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0051.001",
+          "url": "https://atlas.mitre.org/techniques/AML.T0051.001"
+        },
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0057",
+          "url": "https://atlas.mitre.org/techniques/AML.T0057"
+        },
+        {
+          "source_name": "brave.com",
+          "url": "https://brave.com/blog/comet-prompt-injection/"
+        }
+      ],
+      "x_pi_vetting": "Confirmed",
+      "confidence": 85,
+      "x_pi_delivery_method": [
+        "Indirect – website / HTML"
+      ],
+      "x_pi_confirmed_models": [
+        "Perplexity Comet"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--7d3eba64-07d9-5cb8-a256-274fa9af043e",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "M365 Copilot ASCII smuggling exfiltration",
+      "description": "A prompt injection hidden in a malicious email or shared document made M365 Copilot automatically search other emails/documents, then used ASCII smuggling (invisible Unicode tags) to embed harvested data (e.g. MFA codes) in clickable hyperlinks rendered to the user; patched ~Jul 2024.",
+      "external_references": [
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0051.001",
+          "url": "https://atlas.mitre.org/techniques/AML.T0051.001"
+        },
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0068",
+          "url": "https://atlas.mitre.org/techniques/AML.T0068"
+        },
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0057",
+          "url": "https://atlas.mitre.org/techniques/AML.T0057"
+        },
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0053",
+          "url": "https://atlas.mitre.org/techniques/AML.T0053"
+        },
+        {
+          "source_name": "Embrace The Red",
+          "url": "https://embracethered.com/blog/posts/2024/m365-copilot-prompt-injection-tool-invocation-and-data-exfil-using-ascii-smuggling/"
+        }
+      ],
+      "x_pi_vetting": "Confirmed",
+      "confidence": 85,
+      "x_pi_delivery_method": [
+        "Indirect – email",
+        "Indirect – document / file"
+      ],
+      "x_pi_encoding": [
+        "Unicode tag characters (invisible)"
+      ],
+      "x_pi_propagation": [
+        "Moves through tool-call chain"
+      ],
+      "x_pi_confirmed_models": [
+        "Microsoft 365 Copilot"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--7eea61d3-573f-510c-ba1a-aad85e82c5a2",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "MCPoison (Cursor MCP rug-pull)",
+      "description": "CVE-2025-54136: Cursor trusted an approved MCP config permanently, so an attacker who gets a benign mcp.json approved in a shared repo can later swap in a malicious command that executes silently on every subsequent project open.",
+      "external_references": [
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0051.001",
+          "url": "https://atlas.mitre.org/techniques/AML.T0051.001"
+        },
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0053",
+          "url": "https://atlas.mitre.org/techniques/AML.T0053"
+        },
+        {
+          "source_name": "research.checkpoint.com",
+          "url": "https://research.checkpoint.com/2025/cursor-vulnerability-mcpoison/"
+        }
+      ],
+      "x_pi_vetting": "Confirmed",
+      "confidence": 85,
+      "x_pi_delivery_method": [
+        "MCP server / connection",
+        "Code / repository content"
+      ],
+      "x_pi_confirmed_models": [
+        "Cursor IDE (< v1.3)"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--817b9593-d1f8-568d-b9f9-5c20dd6c3e78",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "GitHub MCP toxic agent flow",
+      "description": "A prompt injection planted in a public GitHub issue, reached through the GitHub MCP server, coerces the agent into pulling private-repo data into context and leaking it in an autonomously-created public pull request; no component malfunctions.",
+      "external_references": [
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0051.001",
+          "url": "https://atlas.mitre.org/techniques/AML.T0051.001"
+        },
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0057",
+          "url": "https://atlas.mitre.org/techniques/AML.T0057"
+        },
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0053",
+          "url": "https://atlas.mitre.org/techniques/AML.T0053"
+        },
+        {
+          "source_name": "invariantlabs.ai",
+          "url": "https://invariantlabs.ai/blog/mcp-github-vulnerability"
+        }
+      ],
+      "x_pi_vetting": "Confirmed",
+      "confidence": 85,
+      "x_pi_delivery_method": [
+        "Code / repository content",
+        "MCP server / connection"
+      ],
+      "x_pi_propagation": [
+        "Moves through tool-call chain"
+      ],
+      "x_pi_confirmed_models": [
+        "Claude 4 Opus (Claude Desktop + GitHub MCP)"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--93a25db6-dc2f-5a77-b02d-e7a5711db018",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "CamoLeak (GitHub Copilot Chat)",
+      "description": "CVE-2025-59145 (CVSS 9.6): invisible HTML-comment prompt injection in a pull request made Copilot Chat search a private repo for secrets and exfiltrate them character-by-character via attacker-pregenerated GitHub Camo image URLs; fixed by disabling image rendering.",
+      "external_references": [
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0051.001",
+          "url": "https://atlas.mitre.org/techniques/AML.T0051.001"
+        },
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0068",
+          "url": "https://atlas.mitre.org/techniques/AML.T0068"
+        },
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0057",
+          "url": "https://atlas.mitre.org/techniques/AML.T0057"
+        },
+        {
+          "source_name": "legitsecurity.com",
+          "url": "https://www.legitsecurity.com/blog/camoleak-critical-github-copilot-vulnerability-leaks-private-source-code"
+        }
+      ],
+      "x_pi_vetting": "Confirmed",
+      "confidence": 85,
+      "x_pi_delivery_method": [
+        "Code / repository content"
+      ],
+      "x_pi_encoding": [
+        "HTML / Markdown comment"
+      ],
+      "x_pi_confirmed_models": [
+        "GitHub Copilot Chat"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--a192d399-4e9b-5e4f-a193-2018602d5303",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "GitHub Copilot RCE / \"YOLO mode\"",
+      "description": "CVE-2025-53773: an injected instruction makes Copilot edit .vscode/settings.json to enable chat.tools.autoApprove (\"YOLO mode\"), removing command-approval prompts and enabling arbitrary code execution; one variant used invisible Unicode tags.",
+      "external_references": [
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0051.001",
+          "url": "https://atlas.mitre.org/techniques/AML.T0051.001"
+        },
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0053",
+          "url": "https://atlas.mitre.org/techniques/AML.T0053"
+        },
+        {
+          "source_name": "Embrace The Red",
+          "url": "https://embracethered.com/blog/posts/2025/github-copilot-remote-code-execution-via-prompt-injection/"
+        }
+      ],
+      "x_pi_vetting": "Confirmed",
+      "confidence": 85,
+      "x_pi_delivery_method": [
+        "Indirect – website / HTML",
+        "Code / repository content",
+        "Tool-call / function result"
+      ],
+      "x_pi_encoding": [
+        "Unicode tag characters (invisible)"
+      ],
+      "x_pi_confirmed_models": [
+        "GitHub Copilot (VS Code — Windows, macOS, Linux)"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--a56b9854-610c-5f0f-a712-e8575faf735f",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "Invitation Is All You Need (Gemini)",
+      "description": "A Google Calendar invite (or email) whose fields carry an indirect prompt injection hijacks Gemini when the user interacts with their calendar; 14 demonstrated attacks span short/long-term memory poisoning, tool misuse and automatic agent/app invocation, reaching connected apps and smart-home devices.",
+      "external_references": [
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0051.001",
+          "url": "https://atlas.mitre.org/techniques/AML.T0051.001"
+        },
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0053",
+          "url": "https://atlas.mitre.org/techniques/AML.T0053"
+        },
+        {
+          "source_name": "safebreach.com",
+          "url": "https://www.safebreach.com/blog/invitation-is-all-you-need-hacking-gemini/"
+        }
+      ],
+      "x_pi_vetting": "Confirmed",
+      "confidence": 85,
+      "x_pi_delivery_method": [
+        "Calendar / invite",
+        "Indirect – email"
+      ],
+      "x_pi_propagation": [
+        "Persists in agent / project memory",
+        "Moves through tool-call chain",
+        "Cross-agent / cross-session"
+      ],
+      "x_pi_confirmed_models": [
+        "Google Gemini (web, mobile app, Android assistant)"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--b15d7637-459b-5304-af3a-d19b2221bf5a",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "MCP rug pull",
+      "description": "A malicious MCP server presents a benign tool to gain approval, then silently swaps in poisoned instructions afterward; clients do not re-prompt because the tool identity is unchanged.",
+      "external_references": [
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0051.001",
+          "url": "https://atlas.mitre.org/techniques/AML.T0051.001"
+        },
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0053",
+          "url": "https://atlas.mitre.org/techniques/AML.T0053"
+        },
+        {
+          "source_name": "invariantlabs.ai",
+          "url": "https://invariantlabs.ai/blog/mcp-security-notification-tool-poisoning-attacks"
+        }
+      ],
+      "x_pi_vetting": "Confirmed",
+      "confidence": 85,
+      "x_pi_delivery_method": [
+        "MCP server / connection"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--b46aec65-ba46-501f-81c4-89d89daa9c75",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "AgentFlayer (ChatGPT Connectors)",
+      "description": "An invisible payload hidden in a shared document instructs ChatGPT — via Connectors such as Google Drive — to render a markdown image whose URL parameters carry stolen data; rendering fires the request with no click.",
+      "external_references": [
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0051.001",
+          "url": "https://atlas.mitre.org/techniques/AML.T0051.001"
+        },
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0057",
+          "url": "https://atlas.mitre.org/techniques/AML.T0057"
+        },
+        {
+          "source_name": "labs.zenity.io",
+          "url": "https://labs.zenity.io/post/agentflayer-chatgpt-connectors-0click-attack-5b41"
+        }
+      ],
+      "x_pi_vetting": "Confirmed",
+      "confidence": 85,
+      "x_pi_delivery_method": [
+        "Indirect – document / file"
+      ],
+      "x_pi_confirmed_models": [
+        "ChatGPT (Connectors)"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--c161a43b-453b-5fbd-b9dd-529e0400e187",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "DPD support chatbot override",
+      "description": "A customer instructed DPD's support chatbot to disregard its rules, making it swear and write a poem disparaging DPD — direct instruction override; DPD disabled the bot the same day. Underlying model not disclosed. (User-driven manipulation of the bot they were chatting with; no third-party victim or exfiltration.)",
+      "external_references": [
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0051.000",
+          "url": "https://atlas.mitre.org/techniques/AML.T0051.000"
+        },
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0054",
+          "url": "https://atlas.mitre.org/techniques/AML.T0054"
+        },
+        {
+          "source_name": "The Register",
+          "url": "https://www.theregister.com/2024/01/23/dpd_chatbot_goes_rogue"
+        }
+      ],
+      "x_pi_vetting": "Confirmed",
+      "confidence": 85,
+      "x_pi_delivery_method": [
+        "Direct prompt"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--c4dcfb74-fff4-5207-a8a2-71032ea4990f",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "Multimodal image prompt injection (GPT-4V)",
+      "description": "An image that looks blank carries instructions in off-white text on a white background; GPT-4V's OCR reads and follows them (Goodside's demo made the model suppress its description and advertise a fake sale). Early multimodal prompt injection.",
+      "external_references": [
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0051.001",
+          "url": "https://atlas.mitre.org/techniques/AML.T0051.001"
+        },
+        {
+          "source_name": "Simon Willison",
+          "url": "https://simonwillison.net/2023/Oct/14/multi-modal-prompt-injection/"
+        }
+      ],
+      "x_pi_vetting": "Confirmed",
+      "confidence": 85,
+      "x_pi_delivery_method": [
+        "Multimodal – image"
+      ],
+      "x_pi_confirmed_models": [
+        "GPT-4V"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--d403ccd3-1af8-5a32-843c-aeff0756d61a",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "EchoLeak (M365 Copilot, LLM Scope Violation)",
+      "description": "CVE-2025-32711 (CVSS 9.3): a single crafted email made M365 Copilot's RAG engine pull attacker instructions into context alongside privileged data (\"LLM Scope Violation\") and exfiltrate it with zero user interaction, bypassing the XPIA classifier and link/image redaction; patched server-side.",
+      "external_references": [
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0051.001",
+          "url": "https://atlas.mitre.org/techniques/AML.T0051.001"
+        },
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0057",
+          "url": "https://atlas.mitre.org/techniques/AML.T0057"
+        },
+        {
+          "source_name": "aim.security",
+          "url": "https://www.aim.security/lp/aim-labs-echoleak-m365"
+        }
+      ],
+      "x_pi_vetting": "Confirmed",
+      "confidence": 85,
+      "x_pi_delivery_method": [
+        "Indirect – email"
+      ],
+      "x_pi_confirmed_models": [
+        "Microsoft 365 Copilot"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--d66c4441-a19c-5319-a892-48224d80ab73",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "MCP tool poisoning",
+      "description": "Malicious instructions embedded in an MCP tool description are invisible to the user but read by the model; a poisoned \"add\" tool silently made Cursor read and exfiltrate the developer's SSH key while returning a correct result. Anthropic, OpenAI and Zapier named as affected clients.",
+      "external_references": [
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0051.001",
+          "url": "https://atlas.mitre.org/techniques/AML.T0051.001"
+        },
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0053",
+          "url": "https://atlas.mitre.org/techniques/AML.T0053"
+        },
+        {
+          "source_name": "invariantlabs.ai",
+          "url": "https://invariantlabs.ai/blog/mcp-security-notification-tool-poisoning-attacks"
+        }
+      ],
+      "x_pi_vetting": "Confirmed",
+      "confidence": 85,
+      "x_pi_delivery_method": [
+        "MCP server / connection"
+      ],
+      "x_pi_propagation": [
+        "Moves through tool-call chain"
+      ],
+      "x_pi_confirmed_models": [
+        "Cursor"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--e1e3379e-c171-5cc8-bc4f-c70bfba633f4",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "GitHub Copilot Chat data exfiltration",
+      "description": "Crafted instructions in a source-code file made GitHub Copilot Chat emit a markdown image whose URL carried prior conversation data; when auto-rendered, the data was exfiltrated to the attacker.",
+      "external_references": [
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0051.001",
+          "url": "https://atlas.mitre.org/techniques/AML.T0051.001"
+        },
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0057",
+          "url": "https://atlas.mitre.org/techniques/AML.T0057"
+        },
+        {
+          "source_name": "Embrace The Red",
+          "url": "https://embracethered.com/blog/posts/2024/github-copilot-chat-prompt-injection-data-exfiltration/"
+        }
+      ],
+      "x_pi_vetting": "Confirmed",
+      "confidence": 85,
+      "x_pi_delivery_method": [
+        "Code / repository content"
+      ],
+      "x_pi_confirmed_models": [
+        "GitHub Copilot Chat (GPT-4)"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--e51896bb-2d86-5f29-9b61-4157b6a1017a",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "ASCII smuggling across LLMs (FireTail)",
+      "description": "Invisible Unicode tag characters hidden in ordinary calendar invites and emails were interpreted by Gemini, Grok and DeepSeek but not shown to the user; ChatGPT, Copilot and Claude were found to scrub them. Google responded \"no action.\"",
+      "external_references": [
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0051.001",
+          "url": "https://atlas.mitre.org/techniques/AML.T0051.001"
+        },
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0068",
+          "url": "https://atlas.mitre.org/techniques/AML.T0068"
+        },
+        {
+          "source_name": "firetail.ai",
+          "url": "https://www.firetail.ai/blog/ghosts-in-the-machine-ascii-smuggling-across-various-llms"
+        }
+      ],
+      "x_pi_vetting": "Confirmed",
+      "confidence": 85,
+      "x_pi_delivery_method": [
+        "Calendar / invite",
+        "Indirect – email"
+      ],
+      "x_pi_encoding": [
+        "Unicode tag characters (invisible)"
+      ],
+      "x_pi_confirmed_models": [
+        "Google Gemini",
+        "Grok",
+        "DeepSeek"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--e67aa2d7-eb2b-57b6-b818-df56059b6cf7",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "ZombAIs (Claude Computer Use C2)",
+      "description": "A malicious web page injects instructions that make Claude Computer Use download and run a binary that connects back to the researcher's server — a full prompt-injection-to-command-and-control chain on a computer-using agent.",
+      "external_references": [
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0051.001",
+          "url": "https://atlas.mitre.org/techniques/AML.T0051.001"
+        },
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0053",
+          "url": "https://atlas.mitre.org/techniques/AML.T0053"
+        },
+        {
+          "source_name": "Embrace The Red",
+          "url": "https://embracethered.com/blog/posts/2024/claude-computer-use-c2-the-zombais-are-coming/"
+        }
+      ],
+      "x_pi_vetting": "Confirmed",
+      "confidence": 85,
+      "x_pi_delivery_method": [
+        "Indirect – website / HTML"
+      ],
+      "x_pi_confirmed_models": [
+        "Claude Computer Use"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--ee725641-8355-5b82-b7ad-7da6ac1b31cf",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "Chevrolet dealership chatbot override (\"$1 Tahoe\")",
+      "description": "A user injected instructions making a Chevrolet dealership's ChatGPT-based website assistant \"agree\" to sell a 2024 Tahoe for $1 and call it legally binding — classic direct instruction override (non-binding in reality; user-driven, no third-party victim).",
+      "external_references": [
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0051.000",
+          "url": "https://atlas.mitre.org/techniques/AML.T0051.000"
+        },
+        {
+          "source_name": "the-decoder.com",
+          "url": "https://the-decoder.com/people-buy-brand-new-chevrolets-for-1-from-a-chatgpt-chatbot/"
+        }
+      ],
+      "x_pi_vetting": "Confirmed",
+      "confidence": 85,
+      "x_pi_delivery_method": [
+        "Direct prompt"
+      ],
+      "x_pi_confirmed_models": [
+        "ChatGPT-based dealership assistant"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--f49601b8-b801-580d-b195-ba1723f096c6",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "Base64 encoded-prompt jailbreak",
+      "description": "Encoding a forbidden request in Base64 exploits \"mismatched generalization\" — models learn to decode Base64 in pretraining but safety training never covered such inputs — bypassing guardrails; combination attacks reached ~94% success on GPT-4. Published Jul 2023, just before the 2-year window; canonical primary source for encoded-payload jailbreaks.",
+      "external_references": [
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0054",
+          "url": "https://atlas.mitre.org/techniques/AML.T0054"
+        },
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0068",
+          "url": "https://atlas.mitre.org/techniques/AML.T0068"
+        },
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0051.000",
+          "url": "https://atlas.mitre.org/techniques/AML.T0051.000"
+        },
+        {
+          "source_name": "arXiv",
+          "url": "https://arxiv.org/abs/2307.02483"
+        }
+      ],
+      "x_pi_vetting": "Confirmed",
+      "confidence": 85,
+      "x_pi_delivery_method": [
+        "Direct prompt"
+      ],
+      "x_pi_encoding": [
+        "Base64",
+        "Multi-layer"
+      ],
+      "x_pi_confirmed_models": [
+        "GPT-4",
+        "Claude v1.3",
+        "GPT-3.5 Turbo"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--f6bada4a-8695-5bf6-94c9-71fa6dddb642",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "ASCII smuggling / invisible Unicode tags (foundational)",
+      "description": "Foundational writeup and \"ASCII Smuggler\" tool: Unicode Tags-block code points (U+E0000 range) mirror ASCII but render invisibly, while LLMs still interpret them; hidden instructions caused ChatGPT to invoke DALL·E. Basis for the whole invisible-injection class.",
+      "external_references": [
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0051",
+          "url": "https://atlas.mitre.org/techniques/AML.T0051"
+        },
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0068",
+          "url": "https://atlas.mitre.org/techniques/AML.T0068"
+        },
+        {
+          "source_name": "Embrace The Red",
+          "url": "https://embracethered.com/blog/posts/2024/hiding-and-finding-text-with-unicode-tags/"
+        }
+      ],
+      "x_pi_vetting": "Confirmed",
+      "confidence": 85,
+      "x_pi_delivery_method": [
+        "Indirect – website / HTML",
+        "Indirect – document / file",
+        "Direct prompt"
+      ],
+      "x_pi_encoding": [
+        "Unicode tag characters (invisible)"
+      ],
+      "x_pi_confirmed_models": [
+        "ChatGPT (GPT-4 / DALL·E)"
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--fb7fe82c-3541-5c78-8b1e-3512b3d17e8e",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "Morris II (self-replicating GenAI worm)",
+      "description": "An \"adversarial self-replicating prompt\" makes a RAG-based GenAI email assistant copy the prompt into its own output and deliver it to further agents, triggering a worm-like cascade of indirect prompt injections that spams and exfiltrates data. Demonstrated with text and image payloads.",
+      "external_references": [
+        {
+          "source_name": "mitre-atlas",
+          "external_id": "AML.T0051.001",
+          "url": "https://atlas.mitre.org/techniques/AML.T0051.001"
+        },
+        {
+          "source_name": "arXiv",
+          "url": "https://arxiv.org/abs/2403.02817"
+        }
+      ],
+      "x_pi_vetting": "Confirmed",
+      "confidence": 85,
+      "x_pi_delivery_method": [
+        "Indirect – RAG / retrieved content",
+        "Indirect – email",
+        "Multimodal – image"
+      ],
+      "x_pi_propagation": [
+        "Self-propagating / worm (AI-to-AI)",
+        "Poisons shared data store / RAG",
+        "Emits outbound email / message with further instructions",
+        "Cross-agent / cross-session"
+      ],
+      "x_pi_confirmed_models": [
+        "Gemini Pro",
+        "ChatGPT 4.0",
+        "LLaVA"
+      ]
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--0c696753-f769-5e43-b69a-d996b775b938",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "Researcher: Artem Chaikin, Shivan Kaul Sahib (Brave)",
+      "identity_class": "individual"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--0d6f083b-820c-5891-ad4f-1f609eb1cc60",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "In-the-wild: Ashley Beauchamp",
+      "identity_class": "unknown"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--0de606fd-85b7-5410-abdf-7d167904fa8c",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "invariantlabs.ai",
+      "identity_class": "organization"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--13a6b2af-46ae-5383-90ce-e5194b04907f",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "Researcher: Wei, Haghtalab, Steinhardt (UC Berkeley)",
+      "identity_class": "individual"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--18a86520-3d35-50b0-b3d8-f6e95541d967",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "Researcher: Omer Mayraz (Legit Security)",
+      "identity_class": "individual"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--1ba7f5b9-6e04-5b82-a584-9ddf12cff6b8",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "Researcher: Tamir Ishay Sharbat (Zenity Labs)",
+      "identity_class": "individual"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--212697e3-f683-5b9b-9aad-1ae5dc8e7d6e",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "arXiv",
+      "identity_class": "organization"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--249cf0e2-689b-55f8-8c29-eb9da05aa04f",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "Red team: PromptArmor",
+      "identity_class": "unknown"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--28d37357-fa04-5adf-9135-57470bc16a37",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "promptarmor.com",
+      "identity_class": "organization"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--2ea27599-f85e-572a-8162-ad44b78a68e2",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "Researcher: Johann Rehberger (Embrace The Red)",
+      "identity_class": "individual"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--2ee3d57a-4dd4-5592-9af9-97dd0c811bcf",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "The Register",
+      "identity_class": "organization"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--2f3278ea-71c3-5953-871d-80d775fd6203",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "the-decoder.com",
+      "identity_class": "organization"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--36811d13-e9f1-5718-a4ac-79bb9d2f3a2b",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "brave.com",
+      "identity_class": "organization"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--40715a14-ca6c-5c61-aa46-e63026ddee52",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "Researcher: Invariant Labs",
+      "identity_class": "individual"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--44e7ef74-64f6-519f-9557-cc81af210311",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "Researcher: Check Point Research",
+      "identity_class": "individual"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--4735d78d-8868-5633-a3fe-a87292e889a8",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "In-the-wild: Chris Bakke",
+      "identity_class": "unknown"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--4a47950b-7dd2-5d51-96fe-ff96a231e6a2",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "Researcher: Viktor Markopoulos (FireTail)",
+      "identity_class": "individual"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--4c4e66b2-0e72-5557-8f94-e6faa1f18a01",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "Researcher: Mindgard / Lancaster University (Hackett et al.)",
+      "identity_class": "individual"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--56e5bb67-671a-59d6-8e56-514ceae91739",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "Researcher: Stav Cohen (Technion), Ron Bitton (Intuit), Ben Nassi (Cornell Tech)",
+      "identity_class": "individual"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--6d41056a-61d5-5fb0-beeb-c6f8948bb8b5",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "Researcher: Ziv Karliner (Pillar Security)",
+      "identity_class": "individual"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--76b404a3-5b01-595a-84d5-2c14591c943c",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "scworld.com",
+      "identity_class": "organization"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--7a640f21-a618-50fd-a49e-7d5e34389f86",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "research.checkpoint.com",
+      "identity_class": "organization"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--82352cf5-03ec-520f-b4d2-45fccd7d004b",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "Simon Willison",
+      "identity_class": "organization"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--823b739e-ae5a-5b7c-bd3e-4adcfb1b34e4",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "neuraltrust.ai",
+      "identity_class": "organization"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--9f952617-95a3-55d9-95dd-25f7e660628c",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "Researcher: Aim Labs (Aim Security)",
+      "identity_class": "individual"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--a076fff9-19c3-552f-b269-071309cbd8f9",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "labs.zenity.io",
+      "identity_class": "organization"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--add8eb35-c8f8-5aeb-b186-508b4888456e",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "Researcher: Riley Goodside (via Simon Willison)",
+      "identity_class": "individual"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--b1b68744-93ac-592a-ac96-bd0c859a9117",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "firetail.ai",
+      "identity_class": "organization"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--b28d6bc9-06c0-5df5-897a-092a5b2bc124",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "legitsecurity.com",
+      "identity_class": "organization"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--c060e9bc-10e5-5b77-86ba-ce2516fda498",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "Embrace The Red",
+      "identity_class": "organization"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--c2baa85b-2718-5b71-be92-fd3f552fc300",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "Researcher: Or Yair, Ben Nassi, Stav Cohen (SafeBreach / Technion)",
+      "identity_class": "individual"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--cf5555ab-6c35-5912-9db0-24ab38dc42df",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "Red team: Trail of Bits",
+      "identity_class": "unknown"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--cf60928f-c516-54bc-b9ff-b80aa5f8b439",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "Researcher: NeuralTrust",
+      "identity_class": "individual"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--d6698902-41cc-54dc-b8ab-67e98c525fc6",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "catonetworks.com",
+      "identity_class": "organization"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--db4306e4-f6ee-5862-9b33-dca9ea59a15b",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "Trail of Bits",
+      "identity_class": "organization"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--dd0bfe6e-8bf9-56ef-8fa1-a18fd16028dd",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "aim.security",
+      "identity_class": "organization"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--de62dfbd-4932-586c-8a69-1c9a8a14cdb0",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "pillar.security",
+      "identity_class": "organization"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--dedc9dd7-70cb-5f3f-8097-526dc65fe1c5",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "In-the-wild: actor \"lkmanka58\"",
+      "identity_class": "unknown"
+    },
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--f43e1798-0d5a-5cbe-bb5c-7c6389ee254f",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "safebreach.com",
+      "identity_class": "organization"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--02696955-e486-55d4-9d6a-49fa4bc6201a",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "relationship_type": "uses",
+      "source_ref": "identity--18a86520-3d35-50b0-b3d8-f6e95541d967",
+      "target_ref": "attack-pattern--93a25db6-dc2f-5a77-b02d-e7a5711db018"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--093c7459-7dc0-5033-8ba4-2faefd882c1e",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "relationship_type": "uses",
+      "source_ref": "identity--add8eb35-c8f8-5aeb-b186-508b4888456e",
+      "target_ref": "attack-pattern--c4dcfb74-fff4-5207-a8a2-71032ea4990f"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--0968c907-a7e1-5d6f-9fb1-f6ca2067425a",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "relationship_type": "uses",
+      "source_ref": "identity--249cf0e2-689b-55f8-8c29-eb9da05aa04f",
+      "target_ref": "attack-pattern--75397482-162e-59f2-a74c-50c404c7d7a9"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--0abc6684-52ea-5b33-b3df-9cbc9b64e310",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "relationship_type": "uses",
+      "source_ref": "identity--4c4e66b2-0e72-5557-8f94-e6faa1f18a01",
+      "target_ref": "attack-pattern--502de093-d3a5-5713-a6c3-fda3d8e572d3"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--1a0349ef-a5e7-5904-aa4b-64ddbff699cf",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "relationship_type": "uses",
+      "source_ref": "identity--cf5555ab-6c35-5912-9db0-24ab38dc42df",
+      "target_ref": "attack-pattern--255d681a-faf4-5ea7-b25b-d0fb726abd32"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--2499ffe7-ba65-5f85-a844-8dd4ab77ea30",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "relationship_type": "uses",
+      "source_ref": "identity--6d41056a-61d5-5fb0-beeb-c6f8948bb8b5",
+      "target_ref": "attack-pattern--135c1f3f-d80f-5dac-aebc-68cdf2e72532"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--375d600c-41a9-59dd-98df-98ec84a9c15a",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "relationship_type": "uses",
+      "source_ref": "identity--9f952617-95a3-55d9-95dd-25f7e660628c",
+      "target_ref": "attack-pattern--31a4ce71-264a-5c44-a193-25f4b09f6611"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--3d92eadf-b93a-5948-931f-0c4affd8748e",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "relationship_type": "uses",
+      "source_ref": "identity--2ea27599-f85e-572a-8162-ad44b78a68e2",
+      "target_ref": "attack-pattern--e67aa2d7-eb2b-57b6-b818-df56059b6cf7"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--4e897065-252a-51e6-a7a1-bbe1be0d1e11",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "relationship_type": "uses",
+      "source_ref": "identity--c2baa85b-2718-5b71-be92-fd3f552fc300",
+      "target_ref": "attack-pattern--a56b9854-610c-5f0f-a712-e8575faf735f"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--551999e6-62e2-507e-8d8e-645de0d41895",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "relationship_type": "uses",
+      "source_ref": "identity--40715a14-ca6c-5c61-aa46-e63026ddee52",
+      "target_ref": "attack-pattern--817b9593-d1f8-568d-b9f9-5c20dd6c3e78"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--5e9b56d1-909b-56eb-b993-fa327d0ecd67",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "relationship_type": "uses",
+      "source_ref": "identity--2ea27599-f85e-572a-8162-ad44b78a68e2",
+      "target_ref": "attack-pattern--e1e3379e-c171-5cc8-bc4f-c70bfba633f4"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--7036481d-af8b-5fba-bd06-bba668f8917f",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "relationship_type": "uses",
+      "source_ref": "identity--2ea27599-f85e-572a-8162-ad44b78a68e2",
+      "target_ref": "attack-pattern--2fb37f98-df39-5078-85af-245a9ce0be0f"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--78eebaee-342c-5d21-b2d3-9df27f00c42e",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "relationship_type": "uses",
+      "source_ref": "identity--2ea27599-f85e-572a-8162-ad44b78a68e2",
+      "target_ref": "attack-pattern--0e694b90-1381-5624-b2b5-2e06b75b20b6"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--878d0bd5-dc92-5ab9-9e1c-495178c2709a",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "relationship_type": "uses",
+      "source_ref": "identity--4a47950b-7dd2-5d51-96fe-ff96a231e6a2",
+      "target_ref": "attack-pattern--e51896bb-2d86-5f29-9b61-4157b6a1017a"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--96937d56-ecb9-5c88-809d-a88d93b15efc",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "relationship_type": "uses",
+      "source_ref": "identity--2ea27599-f85e-572a-8162-ad44b78a68e2",
+      "target_ref": "attack-pattern--6a8d8242-ad07-57bc-9f85-db399fbd4469"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--9d7d0391-e011-59d9-b969-2a6a5261adf9",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "relationship_type": "uses",
+      "source_ref": "identity--13a6b2af-46ae-5383-90ce-e5194b04907f",
+      "target_ref": "attack-pattern--f49601b8-b801-580d-b195-ba1723f096c6"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--9e0bc585-cdde-59b2-8dca-f3a8996455ab",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "relationship_type": "uses",
+      "source_ref": "identity--0c696753-f769-5e43-b69a-d996b775b938",
+      "target_ref": "attack-pattern--754f1ca3-5e36-51f6-b36b-4e9e0a03b2cc"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--9f6c3d18-20a0-57b8-927a-c1e1e46ffb8d",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "relationship_type": "uses",
+      "source_ref": "identity--2ea27599-f85e-572a-8162-ad44b78a68e2",
+      "target_ref": "attack-pattern--f6bada4a-8695-5bf6-94c9-71fa6dddb642"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--aa66dcfc-390e-568f-ab81-565ac53805e2",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "relationship_type": "uses",
+      "source_ref": "identity--44e7ef74-64f6-519f-9557-cc81af210311",
+      "target_ref": "attack-pattern--7eea61d3-573f-510c-ba1a-aad85e82c5a2"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--ae413737-c3b7-5a7f-9b5e-ffde5ea0e7a7",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "relationship_type": "uses",
+      "source_ref": "identity--2ea27599-f85e-572a-8162-ad44b78a68e2",
+      "target_ref": "attack-pattern--a192d399-4e9b-5e4f-a193-2018602d5303"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--bc1c57ed-c399-5cff-b7eb-982827be3a00",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "relationship_type": "uses",
+      "source_ref": "identity--0d6f083b-820c-5891-ad4f-1f609eb1cc60",
+      "target_ref": "attack-pattern--c161a43b-453b-5fbd-b9dd-529e0400e187"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--bd194009-95bb-5b84-9333-bc516b4fde9a",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "relationship_type": "uses",
+      "source_ref": "identity--dedc9dd7-70cb-5f3f-8097-526dc65fe1c5",
+      "target_ref": "attack-pattern--0bafc0c6-af33-5e5a-9d1d-97d0c197d298"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--c2b9e5b9-354a-5a8e-9420-c9aaf69bcd3f",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "relationship_type": "uses",
+      "source_ref": "identity--2ea27599-f85e-572a-8162-ad44b78a68e2",
+      "target_ref": "attack-pattern--482f3092-1862-579b-939e-fb37c006e5a4"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--c6dcef51-1b6b-529f-b5b9-3b5a631b8abf",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "relationship_type": "uses",
+      "source_ref": "identity--40715a14-ca6c-5c61-aa46-e63026ddee52",
+      "target_ref": "attack-pattern--d66c4441-a19c-5319-a892-48224d80ab73"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--d36219ff-2dda-5b81-9a7d-ca0544ca72d7",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "relationship_type": "uses",
+      "source_ref": "identity--9f952617-95a3-55d9-95dd-25f7e660628c",
+      "target_ref": "attack-pattern--d403ccd3-1af8-5a32-843c-aeff0756d61a"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--d4f976c4-16ae-5940-bccb-2c4e54e92882",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "relationship_type": "uses",
+      "source_ref": "identity--2ea27599-f85e-572a-8162-ad44b78a68e2",
+      "target_ref": "attack-pattern--7d3eba64-07d9-5cb8-a256-274fa9af043e"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--dca1c776-2530-5162-9ae1-bf97eadc6641",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "relationship_type": "uses",
+      "source_ref": "identity--56e5bb67-671a-59d6-8e56-514ceae91739",
+      "target_ref": "attack-pattern--fb7fe82c-3541-5c78-8b1e-3512b3d17e8e"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--ded87829-1907-5adb-8274-c75d3cd4ca47",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "relationship_type": "uses",
+      "source_ref": "identity--cf60928f-c516-54bc-b9ff-b80aa5f8b439",
+      "target_ref": "attack-pattern--26ab0bae-e83f-5526-b915-9241628092d0"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--ecd55a22-3ca8-5db3-9133-0b771ddde554",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "relationship_type": "uses",
+      "source_ref": "identity--1ba7f5b9-6e04-5b82-a584-9ddf12cff6b8",
+      "target_ref": "attack-pattern--b46aec65-ba46-501f-81c4-89d89daa9c75"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--ef1ea48a-8a8a-5d7a-afae-c196fc845e0b",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "relationship_type": "uses",
+      "source_ref": "identity--0c696753-f769-5e43-b69a-d996b775b938",
+      "target_ref": "attack-pattern--54bc1846-b6b9-52fd-a913-16dda040b830"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--efb527e3-607d-541a-b6fb-dcf7c9c6e2bf",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "relationship_type": "uses",
+      "source_ref": "identity--4735d78d-8868-5633-a3fe-a87292e889a8",
+      "target_ref": "attack-pattern--ee725641-8355-5b82-b7ad-7da6ac1b31cf"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--f9120d28-f649-5449-adff-417eba09dbd4",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "relationship_type": "uses",
+      "source_ref": "identity--40715a14-ca6c-5c61-aa46-e63026ddee52",
+      "target_ref": "attack-pattern--b15d7637-459b-5304-af3a-d19b2221bf5a"
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--00244e3b-2109-5b6f-a719-41076525e4d9",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "Embrace The Red: GitHub Copilot Chat data exfiltration",
+      "report_types": [
+        "attack-pattern"
+      ],
+      "published": "2024-01-01T00:00:00.000Z",
+      "created_by_ref": "identity--c060e9bc-10e5-5b77-86ba-ce2516fda498",
+      "object_refs": [
+        "attack-pattern--e1e3379e-c171-5cc8-bc4f-c70bfba633f4"
+      ],
+      "external_references": [
+        {
+          "source_name": "Embrace The Red",
+          "url": "https://embracethered.com/blog/posts/2024/github-copilot-chat-prompt-injection-data-exfiltration/"
+        }
+      ]
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--1ce96553-2d78-5ce7-a416-781a6bae99ef",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "catonetworks.com: CurXecute (Cursor RCE via MCP)",
+      "report_types": [
+        "attack-pattern"
+      ],
+      "published": "2024-01-01T00:00:00.000Z",
+      "created_by_ref": "identity--d6698902-41cc-54dc-b8ab-67e98c525fc6",
+      "object_refs": [
+        "attack-pattern--31a4ce71-264a-5c44-a193-25f4b09f6611"
+      ],
+      "external_references": [
+        {
+          "source_name": "catonetworks.com",
+          "url": "https://www.catonetworks.com/blog/curxecute-rce/"
+        }
+      ]
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--22360d54-3faf-5a62-b346-da46493afec1",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "Embrace The Red: Hidden prompt injection against Claude (Unicode tags)",
+      "report_types": [
+        "attack-pattern"
+      ],
+      "published": "2024-01-01T00:00:00.000Z",
+      "created_by_ref": "identity--c060e9bc-10e5-5b77-86ba-ce2516fda498",
+      "object_refs": [
+        "attack-pattern--2fb37f98-df39-5078-85af-245a9ce0be0f"
+      ],
+      "external_references": [
+        {
+          "source_name": "Embrace The Red",
+          "url": "https://embracethered.com/blog/posts/2024/claude-hidden-prompt-injection-ascii-smuggling/"
+        }
+      ]
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--2a1aefdf-d894-5d50-a074-1864cbae7aa8",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "labs.zenity.io: AgentFlayer (ChatGPT Connectors)",
+      "report_types": [
+        "attack-pattern"
+      ],
+      "published": "2024-01-01T00:00:00.000Z",
+      "created_by_ref": "identity--a076fff9-19c3-552f-b269-071309cbd8f9",
+      "object_refs": [
+        "attack-pattern--b46aec65-ba46-501f-81c4-89d89daa9c75"
+      ],
+      "external_references": [
+        {
+          "source_name": "labs.zenity.io",
+          "url": "https://labs.zenity.io/post/agentflayer-chatgpt-connectors-0click-attack-5b41"
+        }
+      ]
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--3532eb39-f37c-5c07-a959-410c96ff1daa",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "Simon Willison: Multimodal image prompt injection (GPT-4V)",
+      "report_types": [
+        "attack-pattern"
+      ],
+      "published": "2024-01-01T00:00:00.000Z",
+      "created_by_ref": "identity--82352cf5-03ec-520f-b4d2-45fccd7d004b",
+      "object_refs": [
+        "attack-pattern--c4dcfb74-fff4-5207-a8a2-71032ea4990f"
+      ],
+      "external_references": [
+        {
+          "source_name": "Simon Willison",
+          "url": "https://simonwillison.net/2023/Oct/14/multi-modal-prompt-injection/"
+        }
+      ]
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--42d1c1c1-c985-5aee-ae85-115aff82b4b7",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "scworld.com: Amazon Q Developer wiper prompt",
+      "report_types": [
+        "attack-pattern"
+      ],
+      "published": "2024-01-01T00:00:00.000Z",
+      "created_by_ref": "identity--76b404a3-5b01-595a-84d5-2c14591c943c",
+      "object_refs": [
+        "attack-pattern--0bafc0c6-af33-5e5a-9d1d-97d0c197d298"
+      ],
+      "external_references": [
+        {
+          "source_name": "scworld.com",
+          "url": "https://www.scworld.com/news/amazon-q-extension-for-vs-code-reportedly-injected-with-wiper-prompt"
+        }
+      ]
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--46e9620f-79c1-58e1-af57-83c562834c35",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "promptarmor.com: Slack AI indirect injection exfiltration",
+      "report_types": [
+        "attack-pattern"
+      ],
+      "published": "2024-01-01T00:00:00.000Z",
+      "created_by_ref": "identity--28d37357-fa04-5adf-9135-57470bc16a37",
+      "object_refs": [
+        "attack-pattern--75397482-162e-59f2-a74c-50c404c7d7a9"
+      ],
+      "external_references": [
+        {
+          "source_name": "promptarmor.com",
+          "url": "https://www.promptarmor.com/resources/data-exfiltration-from-slack-ai-via-indirect-prompt-injection"
+        }
+      ]
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--4b915f40-036a-5276-8d70-6c0e5bc695fe",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "Embrace The Red: ZombAIs (Claude Computer Use C2)",
+      "report_types": [
+        "attack-pattern"
+      ],
+      "published": "2024-01-01T00:00:00.000Z",
+      "created_by_ref": "identity--c060e9bc-10e5-5b77-86ba-ce2516fda498",
+      "object_refs": [
+        "attack-pattern--e67aa2d7-eb2b-57b6-b818-df56059b6cf7"
+      ],
+      "external_references": [
+        {
+          "source_name": "Embrace The Red",
+          "url": "https://embracethered.com/blog/posts/2024/claude-computer-use-c2-the-zombais-are-coming/"
+        }
+      ]
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--4dba6eaa-172b-503c-a42a-d1f0ee2bb49c",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "pillar.security: Rules File Backdoor (Cursor / Copilot)",
+      "report_types": [
+        "attack-pattern"
+      ],
+      "published": "2024-01-01T00:00:00.000Z",
+      "created_by_ref": "identity--de62dfbd-4932-586c-8a69-1c9a8a14cdb0",
+      "object_refs": [
+        "attack-pattern--135c1f3f-d80f-5dac-aebc-68cdf2e72532"
+      ],
+      "external_references": [
+        {
+          "source_name": "pillar.security",
+          "url": "https://www.pillar.security/blog/new-vulnerability-in-github-copilot-and-cursor-how-hackers-can-weaponize-code-agents"
+        }
+      ]
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--4eeb0d1e-a275-516f-8eb3-36933d2921ba",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "brave.com: Perplexity Comet Reddit injection",
+      "report_types": [
+        "attack-pattern"
+      ],
+      "published": "2024-01-01T00:00:00.000Z",
+      "created_by_ref": "identity--36811d13-e9f1-5718-a4ac-79bb9d2f3a2b",
+      "object_refs": [
+        "attack-pattern--754f1ca3-5e36-51f6-b36b-4e9e0a03b2cc"
+      ],
+      "external_references": [
+        {
+          "source_name": "brave.com",
+          "url": "https://brave.com/blog/comet-prompt-injection/"
+        }
+      ]
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--67a9ec46-e096-5aed-af83-50d538d52a9c",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "research.checkpoint.com: MCPoison (Cursor MCP rug-pull)",
+      "report_types": [
+        "attack-pattern"
+      ],
+      "published": "2024-01-01T00:00:00.000Z",
+      "created_by_ref": "identity--7a640f21-a618-50fd-a49e-7d5e34389f86",
+      "object_refs": [
+        "attack-pattern--7eea61d3-573f-510c-ba1a-aad85e82c5a2"
+      ],
+      "external_references": [
+        {
+          "source_name": "research.checkpoint.com",
+          "url": "https://research.checkpoint.com/2025/cursor-vulnerability-mcpoison/"
+        }
+      ]
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--69868b5d-d288-56e9-abc7-c43412596d5a",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "firetail.ai: ASCII smuggling across LLMs (FireTail)",
+      "report_types": [
+        "attack-pattern"
+      ],
+      "published": "2024-01-01T00:00:00.000Z",
+      "created_by_ref": "identity--b1b68744-93ac-592a-ac96-bd0c859a9117",
+      "object_refs": [
+        "attack-pattern--e51896bb-2d86-5f29-9b61-4157b6a1017a"
+      ],
+      "external_references": [
+        {
+          "source_name": "firetail.ai",
+          "url": "https://www.firetail.ai/blog/ghosts-in-the-machine-ascii-smuggling-across-various-llms"
+        }
+      ]
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--6e3bc0ee-4509-5040-b255-48205c3fcd96",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "Embrace The Red: ASCII smuggling / invisible Unicode tags (foundational)",
+      "report_types": [
+        "attack-pattern"
+      ],
+      "published": "2024-01-01T00:00:00.000Z",
+      "created_by_ref": "identity--c060e9bc-10e5-5b77-86ba-ce2516fda498",
+      "object_refs": [
+        "attack-pattern--f6bada4a-8695-5bf6-94c9-71fa6dddb642"
+      ],
+      "external_references": [
+        {
+          "source_name": "Embrace The Red",
+          "url": "https://embracethered.com/blog/posts/2024/hiding-and-finding-text-with-unicode-tags/"
+        }
+      ]
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--86b7b27e-089a-5c6a-b0da-01d9a40dc2c2",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "arXiv: Base64 encoded-prompt jailbreak",
+      "report_types": [
+        "attack-pattern"
+      ],
+      "published": "2024-01-01T00:00:00.000Z",
+      "created_by_ref": "identity--212697e3-f683-5b9b-9aad-1ae5dc8e7d6e",
+      "object_refs": [
+        "attack-pattern--f49601b8-b801-580d-b195-ba1723f096c6"
+      ],
+      "external_references": [
+        {
+          "source_name": "arXiv",
+          "url": "https://arxiv.org/abs/2307.02483"
+        }
+      ]
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--8b3bee4a-dc40-5029-8577-0cb041971d88",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "safebreach.com: Invitation Is All You Need (Gemini)",
+      "report_types": [
+        "attack-pattern"
+      ],
+      "published": "2024-01-01T00:00:00.000Z",
+      "created_by_ref": "identity--f43e1798-0d5a-5cbe-bb5c-7c6389ee254f",
+      "object_refs": [
+        "attack-pattern--a56b9854-610c-5f0f-a712-e8575faf735f"
+      ],
+      "external_references": [
+        {
+          "source_name": "safebreach.com",
+          "url": "https://www.safebreach.com/blog/invitation-is-all-you-need-hacking-gemini/"
+        }
+      ]
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--8c4fffcb-b4e3-5b57-af9d-7dd569246c96",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "legitsecurity.com: CamoLeak (GitHub Copilot Chat)",
+      "report_types": [
+        "attack-pattern"
+      ],
+      "published": "2024-01-01T00:00:00.000Z",
+      "created_by_ref": "identity--b28d6bc9-06c0-5df5-897a-092a5b2bc124",
+      "object_refs": [
+        "attack-pattern--93a25db6-dc2f-5a77-b02d-e7a5711db018"
+      ],
+      "external_references": [
+        {
+          "source_name": "legitsecurity.com",
+          "url": "https://www.legitsecurity.com/blog/camoleak-critical-github-copilot-vulnerability-leaks-private-source-code"
+        }
+      ]
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--997b48bc-2dc0-5fd5-ae42-3f551d56dd51",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "Embrace The Red: M365 Copilot ASCII smuggling exfiltration",
+      "report_types": [
+        "attack-pattern"
+      ],
+      "published": "2024-01-01T00:00:00.000Z",
+      "created_by_ref": "identity--c060e9bc-10e5-5b77-86ba-ce2516fda498",
+      "object_refs": [
+        "attack-pattern--7d3eba64-07d9-5cb8-a256-274fa9af043e"
+      ],
+      "external_references": [
+        {
+          "source_name": "Embrace The Red",
+          "url": "https://embracethered.com/blog/posts/2024/m365-copilot-prompt-injection-tool-invocation-and-data-exfil-using-ascii-smuggling/"
+        }
+      ]
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--aa9d949e-9320-5f71-9ef6-896083acd6f7",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "aim.security: EchoLeak (M365 Copilot, LLM Scope Violation)",
+      "report_types": [
+        "attack-pattern"
+      ],
+      "published": "2024-01-01T00:00:00.000Z",
+      "created_by_ref": "identity--dd0bfe6e-8bf9-56ef-8fa1-a18fd16028dd",
+      "object_refs": [
+        "attack-pattern--d403ccd3-1af8-5a32-843c-aeff0756d61a"
+      ],
+      "external_references": [
+        {
+          "source_name": "aim.security",
+          "url": "https://www.aim.security/lp/aim-labs-echoleak-m365"
+        }
+      ]
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--af2ab774-954f-5319-9861-3f6b803ea959",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "arXiv: Morris II (self-replicating GenAI worm)",
+      "report_types": [
+        "attack-pattern"
+      ],
+      "published": "2024-01-01T00:00:00.000Z",
+      "created_by_ref": "identity--212697e3-f683-5b9b-9aad-1ae5dc8e7d6e",
+      "object_refs": [
+        "attack-pattern--fb7fe82c-3541-5c78-8b1e-3512b3d17e8e"
+      ],
+      "external_references": [
+        {
+          "source_name": "arXiv",
+          "url": "https://arxiv.org/abs/2403.02817"
+        }
+      ]
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--ba289b0d-d757-5268-a458-f7cf5eceb7d3",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "arXiv: Character-injection guardrail evasion",
+      "report_types": [
+        "attack-pattern"
+      ],
+      "published": "2024-01-01T00:00:00.000Z",
+      "created_by_ref": "identity--212697e3-f683-5b9b-9aad-1ae5dc8e7d6e",
+      "object_refs": [
+        "attack-pattern--502de093-d3a5-5713-a6c3-fda3d8e572d3"
+      ],
+      "external_references": [
+        {
+          "source_name": "arXiv",
+          "url": "https://arxiv.org/html/2504.11168v1"
+        }
+      ]
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--c019a97c-db35-597c-b275-7a1a5d3da1c6",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "Embrace The Red: Gemini memory persistence (delayed tool invocation)",
+      "report_types": [
+        "attack-pattern"
+      ],
+      "published": "2024-01-01T00:00:00.000Z",
+      "created_by_ref": "identity--c060e9bc-10e5-5b77-86ba-ce2516fda498",
+      "object_refs": [
+        "attack-pattern--0e694b90-1381-5624-b2b5-2e06b75b20b6"
+      ],
+      "external_references": [
+        {
+          "source_name": "Embrace The Red",
+          "url": "https://embracethered.com/blog/posts/2025/gemini-memory-persistence-prompt-injection/"
+        }
+      ]
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--c1275fa4-ee57-5064-a404-8d5e6b9bf235",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "invariantlabs.ai: GitHub MCP toxic agent flow",
+      "report_types": [
+        "attack-pattern"
+      ],
+      "published": "2024-01-01T00:00:00.000Z",
+      "created_by_ref": "identity--0de606fd-85b7-5410-abdf-7d167904fa8c",
+      "object_refs": [
+        "attack-pattern--817b9593-d1f8-568d-b9f9-5c20dd6c3e78"
+      ],
+      "external_references": [
+        {
+          "source_name": "invariantlabs.ai",
+          "url": "https://invariantlabs.ai/blog/mcp-github-vulnerability"
+        }
+      ]
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--c4de457d-84ba-52c3-a332-9d4eac36158c",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "neuraltrust.ai: ChatGPT Atlas omnibox injection",
+      "report_types": [
+        "attack-pattern"
+      ],
+      "published": "2024-01-01T00:00:00.000Z",
+      "created_by_ref": "identity--823b739e-ae5a-5b7c-bd3e-4adcfb1b34e4",
+      "object_refs": [
+        "attack-pattern--26ab0bae-e83f-5526-b915-9241628092d0"
+      ],
+      "external_references": [
+        {
+          "source_name": "neuraltrust.ai",
+          "url": "https://neuraltrust.ai/blog/openai-atlas-omnibox-prompt-injection"
+        }
+      ]
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--c94b23cc-299a-59fe-9bb6-2551be071fc3",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "Embrace The Red: Google Bard markdown-image exfiltration",
+      "report_types": [
+        "attack-pattern"
+      ],
+      "published": "2024-01-01T00:00:00.000Z",
+      "created_by_ref": "identity--c060e9bc-10e5-5b77-86ba-ce2516fda498",
+      "object_refs": [
+        "attack-pattern--482f3092-1862-579b-939e-fb37c006e5a4"
+      ],
+      "external_references": [
+        {
+          "source_name": "Embrace The Red",
+          "url": "https://embracethered.com/blog/posts/2023/google-bard-data-exfiltration/"
+        }
+      ]
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--d0a8a0e9-4615-5b3e-aab8-bf1555914a98",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "brave.com: Unseeable screenshot-OCR injection",
+      "report_types": [
+        "attack-pattern"
+      ],
+      "published": "2024-01-01T00:00:00.000Z",
+      "created_by_ref": "identity--36811d13-e9f1-5718-a4ac-79bb9d2f3a2b",
+      "object_refs": [
+        "attack-pattern--54bc1846-b6b9-52fd-a913-16dda040b830"
+      ],
+      "external_references": [
+        {
+          "source_name": "brave.com",
+          "url": "https://brave.com/blog/unseeable-prompt-injections/"
+        }
+      ]
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--df4120ee-1126-5b0b-a29e-334945f0e2c4",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "The Register: DPD support chatbot override",
+      "report_types": [
+        "attack-pattern"
+      ],
+      "published": "2024-01-01T00:00:00.000Z",
+      "created_by_ref": "identity--2ee3d57a-4dd4-5592-9af9-97dd0c811bcf",
+      "object_refs": [
+        "attack-pattern--c161a43b-453b-5fbd-b9dd-529e0400e187"
+      ],
+      "external_references": [
+        {
+          "source_name": "The Register",
+          "url": "https://www.theregister.com/2024/01/23/dpd_chatbot_goes_rogue"
+        }
+      ]
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--e2b7588f-da92-5ab2-8cf2-1d04f8e2b5cf",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "invariantlabs.ai: MCP tool poisoning",
+      "report_types": [
+        "attack-pattern"
+      ],
+      "published": "2024-01-01T00:00:00.000Z",
+      "created_by_ref": "identity--0de606fd-85b7-5410-abdf-7d167904fa8c",
+      "object_refs": [
+        "attack-pattern--d66c4441-a19c-5319-a892-48224d80ab73"
+      ],
+      "external_references": [
+        {
+          "source_name": "invariantlabs.ai",
+          "url": "https://invariantlabs.ai/blog/mcp-security-notification-tool-poisoning-attacks"
+        }
+      ]
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--e733d74c-35c7-5d33-9c91-3a897405c062",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "Trail of Bits: MCP line jumping",
+      "report_types": [
+        "attack-pattern"
+      ],
+      "published": "2024-01-01T00:00:00.000Z",
+      "created_by_ref": "identity--db4306e4-f6ee-5862-9b33-dca9ea59a15b",
+      "object_refs": [
+        "attack-pattern--255d681a-faf4-5ea7-b25b-d0fb726abd32"
+      ],
+      "external_references": [
+        {
+          "source_name": "Trail of Bits",
+          "url": "https://blog.trailofbits.com/2025/04/21/jumping-the-line-how-mcp-servers-can-attack-you-before-you-ever-use-them/"
+        }
+      ]
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--e817b95a-583a-5bde-8c09-e425cc279820",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "the-decoder.com: Chevrolet dealership chatbot override (\"$1 Tahoe\")",
+      "report_types": [
+        "attack-pattern"
+      ],
+      "published": "2024-01-01T00:00:00.000Z",
+      "created_by_ref": "identity--2f3278ea-71c3-5953-871d-80d775fd6203",
+      "object_refs": [
+        "attack-pattern--ee725641-8355-5b82-b7ad-7da6ac1b31cf"
+      ],
+      "external_references": [
+        {
+          "source_name": "the-decoder.com",
+          "url": "https://the-decoder.com/people-buy-brand-new-chevrolets-for-1-from-a-chatgpt-chatbot/"
+        }
+      ]
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--fc63d701-9dd1-5e8a-ba3f-f21e6942f06a",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "Embrace The Red: GitHub Copilot RCE / \"YOLO mode\"",
+      "report_types": [
+        "attack-pattern"
+      ],
+      "published": "2024-01-01T00:00:00.000Z",
+      "created_by_ref": "identity--c060e9bc-10e5-5b77-86ba-ce2516fda498",
+      "object_refs": [
+        "attack-pattern--a192d399-4e9b-5e4f-a193-2018602d5303"
+      ],
+      "external_references": [
+        {
+          "source_name": "Embrace The Red",
+          "url": "https://embracethered.com/blog/posts/2025/github-copilot-remote-code-execution-via-prompt-injection/"
+        }
+      ]
+    },
+    {
+      "type": "report",
+      "spec_version": "2.1",
+      "id": "report--ffbe131f-4e4d-5efb-af04-14abe7458eca",
+      "created": "2024-01-01T00:00:00.000Z",
+      "modified": "2024-01-01T00:00:00.000Z",
+      "name": "Embrace The Red: SpAIware (ChatGPT memory)",
+      "report_types": [
+        "attack-pattern"
+      ],
+      "published": "2024-01-01T00:00:00.000Z",
+      "created_by_ref": "identity--c060e9bc-10e5-5b77-86ba-ce2516fda498",
+      "object_refs": [
+        "attack-pattern--6a8d8242-ad07-57bc-9f85-db399fbd4469"
+      ],
+      "external_references": [
+        {
+          "source_name": "Embrace The Red",
+          "url": "https://embracethered.com/blog/posts/2024/chatgpt-macos-app-persistent-data-exfiltration/"
+        }
+      ]
+    }
+  ]
+}

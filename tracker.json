@@ -1,0 +1,997 @@
+{
+  "generated_from": "README.MD",
+  "schema_version": 1,
+  "count": 32,
+  "vocabulary": {
+    "delivery": [
+      "Direct prompt",
+      "Indirect – website / HTML",
+      "Indirect – document / file",
+      "Indirect – email",
+      "Indirect – RAG / retrieved content",
+      "Tool-call / function result",
+      "MCP server / connection",
+      "Multimodal – image",
+      "Multimodal – audio",
+      "Code / repository content",
+      "Calendar / invite"
+    ],
+    "encoding": [
+      "Base64",
+      "Hex",
+      "ROT13",
+      "Leetspeak",
+      "Unicode tag characters (invisible)",
+      "Zero-width characters",
+      "Homoglyphs",
+      "Emoji / variation-selector smuggling",
+      "HTML / Markdown comment",
+      "Metadata / EXIF",
+      "Multi-layer"
+    ],
+    "propagation": [
+      "Self-propagating / worm (AI-to-AI)",
+      "Persists in agent / project memory",
+      "Spreads via MCP to connectors",
+      "Moves through tool-call chain",
+      "Emits outbound email / message with further instructions",
+      "Poisons shared data store / RAG",
+      "Spreads via shared config / rules files",
+      "Cross-agent / cross-session"
+    ]
+  },
+  "facets": {
+    "delivery": [
+      "Calendar / invite",
+      "Code / repository content",
+      "Direct prompt",
+      "Indirect – RAG / retrieved content",
+      "Indirect – document / file",
+      "Indirect – email",
+      "Indirect – website / HTML",
+      "MCP server / connection",
+      "Multimodal – image",
+      "Tool-call / function result"
+    ],
+    "encoding": [
+      "Base64",
+      "Emoji / variation-selector smuggling",
+      "HTML / Markdown comment",
+      "Homoglyphs",
+      "Multi-layer",
+      "Unicode tag characters (invisible)",
+      "Zero-width characters"
+    ],
+    "propagation": [
+      "Cross-agent / cross-session",
+      "Emits outbound email / message with further instructions",
+      "Moves through tool-call chain",
+      "Persists in agent / project memory",
+      "Poisons shared data store / RAG",
+      "Self-propagating / worm (AI-to-AI)",
+      "Spreads via shared config / rules files"
+    ],
+    "confirmed_models": [
+      "Amazon Q Developer (VS Code extension)",
+      "Anthropic Claude",
+      "Azure Prompt Shield",
+      "ChatGPT (Connectors)",
+      "ChatGPT (GPT-4 / DALL·E)",
+      "ChatGPT (macOS app)",
+      "ChatGPT 4.0",
+      "ChatGPT Atlas",
+      "ChatGPT-based dealership assistant",
+      "Claude 4 Opus (Claude Desktop + GitHub MCP)",
+      "Claude Computer Use",
+      "Claude Desktop",
+      "Claude v1.3",
+      "Cursor",
+      "Cursor (fixed v1.3)",
+      "Cursor IDE (< v1.3)",
+      "DeepSeek",
+      "Fellou",
+      "GPT-3.5 Turbo",
+      "GPT-4",
+      "GPT-4V",
+      "Gemini Advanced",
+      "Gemini Pro",
+      "GitHub Copilot",
+      "GitHub Copilot (VS Code — Windows, macOS, Linux)",
+      "GitHub Copilot Chat",
+      "GitHub Copilot Chat (GPT-4)",
+      "Google Bard",
+      "Google Gemini",
+      "Google Gemini (web, mobile app, Android assistant)",
+      "Grok",
+      "LLaVA",
+      "Meta Prompt Guard",
+      "Microsoft 365 Copilot",
+      "NVIDIA NeMo Guard",
+      "Opera Neon",
+      "Perplexity Comet",
+      "ProtectAI Prompt Injection v1/v2",
+      "Slack AI",
+      "Vijil"
+    ],
+    "vetting": [
+      "Confirmed",
+      "Not fully vetted"
+    ]
+  },
+  "entries": [
+    {
+      "technique": "ASCII smuggling across LLMs (FireTail)",
+      "delivery": [
+        "Calendar / invite",
+        "Indirect – email"
+      ],
+      "encoding": [
+        "Unicode tag characters (invisible)"
+      ],
+      "propagation": [],
+      "confirmed_models": [
+        "Google Gemini",
+        "Grok",
+        "DeepSeek"
+      ],
+      "attack_source": "Researcher: Viktor Markopoulos (FireTail)",
+      "vetting": "Confirmed",
+      "brief": "Invisible Unicode tag characters hidden in ordinary calendar invites and emails were interpreted by Gemini, Grok and DeepSeek but not shown to the user; ChatGPT, Copilot and Claude were found to scrub them. Google responded \"no action.\"",
+      "atlas": [
+        "AML.T0051.001",
+        "AML.T0068"
+      ],
+      "reported": "Oct 2025",
+      "links": [
+        "https://www.firetail.ai/blog/ghosts-in-the-machine-ascii-smuggling-across-various-llms"
+      ],
+      "sort_year": 2025,
+      "sort_month": 10,
+      "not_fully_vetted": false
+    },
+    {
+      "technique": "CamoLeak (GitHub Copilot Chat)",
+      "delivery": [
+        "Code / repository content"
+      ],
+      "encoding": [
+        "HTML / Markdown comment"
+      ],
+      "propagation": [],
+      "confirmed_models": [
+        "GitHub Copilot Chat"
+      ],
+      "attack_source": "Researcher: Omer Mayraz (Legit Security)",
+      "vetting": "Confirmed",
+      "brief": "CVE-2025-59145 (CVSS 9.6): invisible HTML-comment prompt injection in a pull request made Copilot Chat search a private repo for secrets and exfiltrate them character-by-character via attacker-pregenerated GitHub Camo image URLs; fixed by disabling image rendering.",
+      "atlas": [
+        "AML.T0051.001",
+        "AML.T0068",
+        "AML.T0057"
+      ],
+      "reported": "Oct 2025",
+      "links": [
+        "https://www.legitsecurity.com/blog/camoleak-critical-github-copilot-vulnerability-leaks-private-source-code"
+      ],
+      "sort_year": 2025,
+      "sort_month": 10,
+      "not_fully_vetted": false
+    },
+    {
+      "technique": "Unseeable screenshot-OCR injection",
+      "delivery": [
+        "Multimodal – image"
+      ],
+      "encoding": [],
+      "propagation": [],
+      "confirmed_models": [
+        "Perplexity Comet",
+        "Fellou",
+        "Opera Neon"
+      ],
+      "attack_source": "Researcher: Artem Chaikin, Shivan Kaul Sahib (Brave)",
+      "vetting": "Confirmed",
+      "brief": "Prompt-injection instructions rendered as near-invisible low-contrast text inside on-page images are recovered by an AI browser's OCR when it processes a screenshot, so a human sees nothing while the agent obeys. Demonstrated across multiple agentic browsers.",
+      "atlas": [
+        "AML.T0051.001",
+        "AML.T0068"
+      ],
+      "reported": "Oct 2025",
+      "links": [
+        "https://brave.com/blog/unseeable-prompt-injections/"
+      ],
+      "sort_year": 2025,
+      "sort_month": 10,
+      "not_fully_vetted": false
+    },
+    {
+      "technique": "ChatGPT Atlas omnibox injection",
+      "delivery": [
+        "Direct prompt",
+        "Indirect – website / HTML"
+      ],
+      "encoding": [],
+      "propagation": [],
+      "confirmed_models": [
+        "ChatGPT Atlas"
+      ],
+      "attack_source": "Researcher: NeuralTrust",
+      "vetting": "Confirmed",
+      "brief": "A string that looks like a URL but fails URL parsing makes Atlas's omnibox treat the embedded text as a trusted prompt; pasted or delivered behind a \"Copy link\" button, it can drive the agent to visit attacker sites or delete Google Drive files in the user's authenticated session.",
+      "atlas": [
+        "AML.T0051.000",
+        "AML.T0051.001"
+      ],
+      "reported": "Oct 2025",
+      "links": [
+        "https://neuraltrust.ai/blog/openai-atlas-omnibox-prompt-injection"
+      ],
+      "sort_year": 2025,
+      "sort_month": 10,
+      "not_fully_vetted": false
+    },
+    {
+      "technique": "Invitation Is All You Need (Gemini)",
+      "delivery": [
+        "Calendar / invite",
+        "Indirect – email"
+      ],
+      "encoding": [],
+      "propagation": [
+        "Persists in agent / project memory",
+        "Moves through tool-call chain",
+        "Cross-agent / cross-session"
+      ],
+      "confirmed_models": [
+        "Google Gemini (web, mobile app, Android assistant)"
+      ],
+      "attack_source": "Researcher: Or Yair, Ben Nassi, Stav Cohen (SafeBreach / Technion)",
+      "vetting": "Confirmed",
+      "brief": "A Google Calendar invite (or email) whose fields carry an indirect prompt injection hijacks Gemini when the user interacts with their calendar; 14 demonstrated attacks span short/long-term memory poisoning, tool misuse and automatic agent/app invocation, reaching connected apps and smart-home devices.",
+      "atlas": [
+        "AML.T0051.001",
+        "AML.T0053"
+      ],
+      "reported": "Aug 2025",
+      "links": [
+        "https://www.safebreach.com/blog/invitation-is-all-you-need-hacking-gemini/"
+      ],
+      "sort_year": 2025,
+      "sort_month": 8,
+      "not_fully_vetted": false
+    },
+    {
+      "technique": "MCPoison (Cursor MCP rug-pull)",
+      "delivery": [
+        "MCP server / connection",
+        "Code / repository content"
+      ],
+      "encoding": [],
+      "propagation": [],
+      "confirmed_models": [
+        "Cursor IDE (< v1.3)"
+      ],
+      "attack_source": "Researcher: Check Point Research",
+      "vetting": "Confirmed",
+      "brief": "CVE-2025-54136: Cursor trusted an approved MCP config permanently, so an attacker who gets a benign mcp.json approved in a shared repo can later swap in a malicious command that executes silently on every subsequent project open.",
+      "atlas": [
+        "AML.T0051.001",
+        "AML.T0053"
+      ],
+      "reported": "Aug 2025",
+      "links": [
+        "https://research.checkpoint.com/2025/cursor-vulnerability-mcpoison/"
+      ],
+      "sort_year": 2025,
+      "sort_month": 8,
+      "not_fully_vetted": false
+    },
+    {
+      "technique": "GitHub Copilot RCE / \"YOLO mode\"",
+      "delivery": [
+        "Indirect – website / HTML",
+        "Code / repository content",
+        "Tool-call / function result"
+      ],
+      "encoding": [
+        "Unicode tag characters (invisible)"
+      ],
+      "propagation": [],
+      "confirmed_models": [
+        "GitHub Copilot (VS Code — Windows, macOS, Linux)"
+      ],
+      "attack_source": "Researcher: Johann Rehberger (Embrace The Red)",
+      "vetting": "Confirmed",
+      "brief": "CVE-2025-53773: an injected instruction makes Copilot edit .vscode/settings.json to enable chat.tools.autoApprove (\"YOLO mode\"), removing command-approval prompts and enabling arbitrary code execution; one variant used invisible Unicode tags.",
+      "atlas": [
+        "AML.T0051.001",
+        "AML.T0053"
+      ],
+      "reported": "Aug 2025",
+      "links": [
+        "https://embracethered.com/blog/posts/2025/github-copilot-remote-code-execution-via-prompt-injection/"
+      ],
+      "sort_year": 2025,
+      "sort_month": 8,
+      "not_fully_vetted": false
+    },
+    {
+      "technique": "CurXecute (Cursor RCE via MCP)",
+      "delivery": [
+        "Tool-call / function result"
+      ],
+      "encoding": [],
+      "propagation": [
+        "Moves through tool-call chain"
+      ],
+      "confirmed_models": [
+        "Cursor (fixed v1.3)"
+      ],
+      "attack_source": "Researcher: Aim Labs (Aim Security)",
+      "vetting": "Not fully vetted",
+      "brief": "CVE-2025-54135: a prompt injection delivered via an external MCP data source (e.g. a Slack message returned through a tool) makes Cursor rewrite its own mcp.json, and auto-run executes the attacker's command with no approval. Primary Aim Labs page was unreachable at verification; corroborated by secondary reporting.",
+      "atlas": [
+        "AML.T0051.001",
+        "AML.T0053"
+      ],
+      "reported": "Aug 2025",
+      "links": [
+        "https://www.catonetworks.com/blog/curxecute-rce/"
+      ],
+      "sort_year": 2025,
+      "sort_month": 8,
+      "not_fully_vetted": true
+    },
+    {
+      "technique": "AgentFlayer (ChatGPT Connectors)",
+      "delivery": [
+        "Indirect – document / file"
+      ],
+      "encoding": [],
+      "propagation": [],
+      "confirmed_models": [
+        "ChatGPT (Connectors)"
+      ],
+      "attack_source": "Researcher: Tamir Ishay Sharbat (Zenity Labs)",
+      "vetting": "Confirmed",
+      "brief": "An invisible payload hidden in a shared document instructs ChatGPT — via Connectors such as Google Drive — to render a markdown image whose URL parameters carry stolen data; rendering fires the request with no click.",
+      "atlas": [
+        "AML.T0051.001",
+        "AML.T0057"
+      ],
+      "reported": "Aug 2025",
+      "links": [
+        "https://labs.zenity.io/post/agentflayer-chatgpt-connectors-0click-attack-5b41"
+      ],
+      "sort_year": 2025,
+      "sort_month": 8,
+      "not_fully_vetted": false
+    },
+    {
+      "technique": "Perplexity Comet Reddit injection",
+      "delivery": [
+        "Indirect – website / HTML"
+      ],
+      "encoding": [],
+      "propagation": [],
+      "confirmed_models": [
+        "Perplexity Comet"
+      ],
+      "attack_source": "Researcher: Artem Chaikin, Shivan Kaul Sahib (Brave)",
+      "vetting": "Confirmed",
+      "brief": "Summarizing a Reddit page whose comment hid instructions behind a spoiler tag caused the Comet browser to read the user's email and a Gmail OTP from authenticated sessions and exfiltrate them by replying to the comment.",
+      "atlas": [
+        "AML.T0051.001",
+        "AML.T0057"
+      ],
+      "reported": "Aug 2025",
+      "links": [
+        "https://brave.com/blog/comet-prompt-injection/"
+      ],
+      "sort_year": 2025,
+      "sort_month": 8,
+      "not_fully_vetted": false
+    },
+    {
+      "technique": "Amazon Q Developer wiper prompt",
+      "delivery": [
+        "Code / repository content"
+      ],
+      "encoding": [],
+      "propagation": [],
+      "confirmed_models": [
+        "Amazon Q Developer (VS Code extension)"
+      ],
+      "attack_source": "In-the-wild: actor \"lkmanka58\"",
+      "vetting": "Not fully vetted",
+      "brief": "An attacker merged a PR into the Amazon Q Developer extension planting a prompt instructing the assistant to wipe local files and AWS resources; it shipped in v1.84.0 before removal (reportedly would not execute due to formatting). Verified via aggregated reporting; primary source not directly confirmed.",
+      "atlas": [
+        "AML.T0051.001"
+      ],
+      "reported": "Jul 2025",
+      "links": [
+        "https://www.scworld.com/news/amazon-q-extension-for-vs-code-reportedly-injected-with-wiper-prompt"
+      ],
+      "sort_year": 2025,
+      "sort_month": 7,
+      "not_fully_vetted": true
+    },
+    {
+      "technique": "EchoLeak (M365 Copilot, LLM Scope Violation)",
+      "delivery": [
+        "Indirect – email"
+      ],
+      "encoding": [],
+      "propagation": [],
+      "confirmed_models": [
+        "Microsoft 365 Copilot"
+      ],
+      "attack_source": "Researcher: Aim Labs (Aim Security)",
+      "vetting": "Confirmed",
+      "brief": "CVE-2025-32711 (CVSS 9.3): a single crafted email made M365 Copilot's RAG engine pull attacker instructions into context alongside privileged data (\"LLM Scope Violation\") and exfiltrate it with zero user interaction, bypassing the XPIA classifier and link/image redaction; patched server-side.",
+      "atlas": [
+        "AML.T0051.001",
+        "AML.T0057"
+      ],
+      "reported": "Jun 2025",
+      "links": [
+        "https://www.aim.security/lp/aim-labs-echoleak-m365"
+      ],
+      "sort_year": 2025,
+      "sort_month": 6,
+      "not_fully_vetted": false
+    },
+    {
+      "technique": "GitHub MCP toxic agent flow",
+      "delivery": [
+        "Code / repository content",
+        "MCP server / connection"
+      ],
+      "encoding": [],
+      "propagation": [
+        "Moves through tool-call chain"
+      ],
+      "confirmed_models": [
+        "Claude 4 Opus (Claude Desktop + GitHub MCP)"
+      ],
+      "attack_source": "Researcher: Invariant Labs",
+      "vetting": "Confirmed",
+      "brief": "A prompt injection planted in a public GitHub issue, reached through the GitHub MCP server, coerces the agent into pulling private-repo data into context and leaking it in an autonomously-created public pull request; no component malfunctions.",
+      "atlas": [
+        "AML.T0051.001",
+        "AML.T0057",
+        "AML.T0053"
+      ],
+      "reported": "May 2025",
+      "links": [
+        "https://invariantlabs.ai/blog/mcp-github-vulnerability"
+      ],
+      "sort_year": 2025,
+      "sort_month": 5,
+      "not_fully_vetted": false
+    },
+    {
+      "technique": "Character-injection guardrail evasion",
+      "delivery": [
+        "Direct prompt"
+      ],
+      "encoding": [
+        "Zero-width characters",
+        "Homoglyphs",
+        "Emoji / variation-selector smuggling",
+        "Multi-layer"
+      ],
+      "propagation": [],
+      "confirmed_models": [
+        "Azure Prompt Shield",
+        "Meta Prompt Guard",
+        "ProtectAI Prompt Injection v1/v2",
+        "NVIDIA NeMo Guard",
+        "Vijil"
+      ],
+      "attack_source": "Researcher: Mindgard / Lancaster University (Hackett et al.)",
+      "vetting": "Confirmed",
+      "brief": "Systematic study: non-printing zero-width characters, homoglyph substitution and emoji variation-selector smuggling evade commercial prompt-injection/jailbreak guardrail classifiers (the confirmed targets are the detection systems, not the LLMs); zero-width averaged 44–76% evasion, emoji smuggling highest.",
+      "atlas": [
+        "AML.T0068",
+        "AML.T0051"
+      ],
+      "reported": "Apr 2025",
+      "links": [
+        "https://arxiv.org/html/2504.11168v1"
+      ],
+      "sort_year": 2025,
+      "sort_month": 4,
+      "not_fully_vetted": false
+    },
+    {
+      "technique": "MCP tool poisoning",
+      "delivery": [
+        "MCP server / connection"
+      ],
+      "encoding": [],
+      "propagation": [
+        "Moves through tool-call chain"
+      ],
+      "confirmed_models": [
+        "Cursor"
+      ],
+      "attack_source": "Researcher: Invariant Labs",
+      "vetting": "Confirmed",
+      "brief": "Malicious instructions embedded in an MCP tool description are invisible to the user but read by the model; a poisoned \"add\" tool silently made Cursor read and exfiltrate the developer's SSH key while returning a correct result. Anthropic, OpenAI and Zapier named as affected clients.",
+      "atlas": [
+        "AML.T0051.001",
+        "AML.T0053"
+      ],
+      "reported": "Apr 2025",
+      "links": [
+        "https://invariantlabs.ai/blog/mcp-security-notification-tool-poisoning-attacks"
+      ],
+      "sort_year": 2025,
+      "sort_month": 4,
+      "not_fully_vetted": false
+    },
+    {
+      "technique": "MCP line jumping",
+      "delivery": [
+        "MCP server / connection"
+      ],
+      "encoding": [],
+      "propagation": [],
+      "confirmed_models": [
+        "Claude Desktop"
+      ],
+      "attack_source": "Red team: Trail of Bits",
+      "vetting": "Confirmed",
+      "brief": "Because MCP clients load every tool description into the model's context as soon as a server is listed, a malicious description can alter model behavior before any tool is invoked, bypassing the user's tool-call approval step.",
+      "atlas": [
+        "AML.T0051.001",
+        "AML.T0053"
+      ],
+      "reported": "Apr 2025",
+      "links": [
+        "https://blog.trailofbits.com/2025/04/21/jumping-the-line-how-mcp-servers-can-attack-you-before-you-ever-use-them/"
+      ],
+      "sort_year": 2025,
+      "sort_month": 4,
+      "not_fully_vetted": false
+    },
+    {
+      "technique": "MCP rug pull",
+      "delivery": [
+        "MCP server / connection"
+      ],
+      "encoding": [],
+      "propagation": [],
+      "confirmed_models": [],
+      "attack_source": "Researcher: Invariant Labs",
+      "vetting": "Confirmed",
+      "brief": "A malicious MCP server presents a benign tool to gain approval, then silently swaps in poisoned instructions afterward; clients do not re-prompt because the tool identity is unchanged.",
+      "atlas": [
+        "AML.T0051.001",
+        "AML.T0053"
+      ],
+      "reported": "Apr 2025",
+      "links": [
+        "https://invariantlabs.ai/blog/mcp-security-notification-tool-poisoning-attacks"
+      ],
+      "sort_year": 2025,
+      "sort_month": 4,
+      "not_fully_vetted": false
+    },
+    {
+      "technique": "Rules File Backdoor (Cursor / Copilot)",
+      "delivery": [
+        "Code / repository content"
+      ],
+      "encoding": [
+        "Zero-width characters",
+        "Unicode tag characters (invisible)"
+      ],
+      "propagation": [
+        "Spreads via shared config / rules files"
+      ],
+      "confirmed_models": [
+        "Cursor",
+        "GitHub Copilot"
+      ],
+      "attack_source": "Researcher: Ziv Karliner (Pillar Security)",
+      "vetting": "Confirmed",
+      "brief": "Invisible-Unicode instructions hidden in AI coding \"rules\"/config files silently steer Cursor and GitHub Copilot to insert backdoors into generated code, with nothing shown in chat or logs; the hidden characters are invisible even in GitHub's PR-review view.",
+      "atlas": [
+        "AML.T0051.001",
+        "AML.T0068"
+      ],
+      "reported": "Mar 2025",
+      "links": [
+        "https://www.pillar.security/blog/new-vulnerability-in-github-copilot-and-cursor-how-hackers-can-weaponize-code-agents"
+      ],
+      "sort_year": 2025,
+      "sort_month": 3,
+      "not_fully_vetted": false
+    },
+    {
+      "technique": "Gemini memory persistence (delayed tool invocation)",
+      "delivery": [
+        "Indirect – document / file"
+      ],
+      "encoding": [],
+      "propagation": [
+        "Persists in agent / project memory",
+        "Cross-agent / cross-session"
+      ],
+      "confirmed_models": [
+        "Gemini Advanced"
+      ],
+      "attack_source": "Researcher: Johann Rehberger (Embrace The Red)",
+      "vetting": "Confirmed",
+      "brief": "A malicious uploaded document poisons the chat so that when the user later says a trigger word, Gemini invokes its memory tool \"on the user's behalf\" (\"delayed tool invocation\") and writes attacker-chosen false long-term memories that persist across future sessions.",
+      "atlas": [
+        "AML.T0051.001",
+        "AML.T0053"
+      ],
+      "reported": "Feb 2025",
+      "links": [
+        "https://embracethered.com/blog/posts/2025/gemini-memory-persistence-prompt-injection/"
+      ],
+      "sort_year": 2025,
+      "sort_month": 2,
+      "not_fully_vetted": false
+    },
+    {
+      "technique": "ZombAIs (Claude Computer Use C2)",
+      "delivery": [
+        "Indirect – website / HTML"
+      ],
+      "encoding": [],
+      "propagation": [],
+      "confirmed_models": [
+        "Claude Computer Use"
+      ],
+      "attack_source": "Researcher: Johann Rehberger (Embrace The Red)",
+      "vetting": "Confirmed",
+      "brief": "A malicious web page injects instructions that make Claude Computer Use download and run a binary that connects back to the researcher's server — a full prompt-injection-to-command-and-control chain on a computer-using agent.",
+      "atlas": [
+        "AML.T0051.001",
+        "AML.T0053"
+      ],
+      "reported": "Oct 2024",
+      "links": [
+        "https://embracethered.com/blog/posts/2024/claude-computer-use-c2-the-zombais-are-coming/"
+      ],
+      "sort_year": 2024,
+      "sort_month": 10,
+      "not_fully_vetted": false
+    },
+    {
+      "technique": "SpAIware (ChatGPT memory)",
+      "delivery": [
+        "Indirect – website / HTML",
+        "Indirect – document / file"
+      ],
+      "encoding": [],
+      "propagation": [
+        "Persists in agent / project memory",
+        "Cross-agent / cross-session"
+      ],
+      "confirmed_models": [
+        "ChatGPT (macOS app)"
+      ],
+      "attack_source": "Researcher: Johann Rehberger (Embrace The Red)",
+      "vetting": "Confirmed",
+      "brief": "Prompt injection from untrusted web/document content writes a persistent instruction into ChatGPT's long-term Memory, causing continuous exfiltration (via rendered image URLs) of everything the user types or receives in all future sessions until the memory is removed.",
+      "atlas": [
+        "AML.T0051.001",
+        "AML.T0057"
+      ],
+      "reported": "Sep 2024",
+      "links": [
+        "https://embracethered.com/blog/posts/2024/chatgpt-macos-app-persistent-data-exfiltration/"
+      ],
+      "sort_year": 2024,
+      "sort_month": 9,
+      "not_fully_vetted": false
+    },
+    {
+      "technique": "M365 Copilot ASCII smuggling exfiltration",
+      "delivery": [
+        "Indirect – email",
+        "Indirect – document / file"
+      ],
+      "encoding": [
+        "Unicode tag characters (invisible)"
+      ],
+      "propagation": [
+        "Moves through tool-call chain"
+      ],
+      "confirmed_models": [
+        "Microsoft 365 Copilot"
+      ],
+      "attack_source": "Researcher: Johann Rehberger (Embrace The Red)",
+      "vetting": "Confirmed",
+      "brief": "A prompt injection hidden in a malicious email or shared document made M365 Copilot automatically search other emails/documents, then used ASCII smuggling (invisible Unicode tags) to embed harvested data (e.g. MFA codes) in clickable hyperlinks rendered to the user; patched ~Jul 2024.",
+      "atlas": [
+        "AML.T0051.001",
+        "AML.T0068",
+        "AML.T0057",
+        "AML.T0053"
+      ],
+      "reported": "Aug 2024",
+      "links": [
+        "https://embracethered.com/blog/posts/2024/m365-copilot-prompt-injection-tool-invocation-and-data-exfil-using-ascii-smuggling/"
+      ],
+      "sort_year": 2024,
+      "sort_month": 8,
+      "not_fully_vetted": false
+    },
+    {
+      "technique": "Slack AI indirect injection exfiltration",
+      "delivery": [
+        "Indirect – RAG / retrieved content"
+      ],
+      "encoding": [],
+      "propagation": [
+        "Poisons shared data store / RAG"
+      ],
+      "confirmed_models": [
+        "Slack AI"
+      ],
+      "attack_source": "Red team: PromptArmor",
+      "vetting": "Confirmed",
+      "brief": "An attacker plants instructions in a public Slack channel; Slack AI ingests them into its RAG pipeline, and when a victim later queries it, the injected instruction renders a markdown link smuggling private-channel data (e.g. an API key) into the URL to the attacker.",
+      "atlas": [
+        "AML.T0051.001",
+        "AML.T0057"
+      ],
+      "reported": "Aug 2024",
+      "links": [
+        "https://www.promptarmor.com/resources/data-exfiltration-from-slack-ai-via-indirect-prompt-injection"
+      ],
+      "sort_year": 2024,
+      "sort_month": 8,
+      "not_fully_vetted": false
+    },
+    {
+      "technique": "GitHub Copilot Chat data exfiltration",
+      "delivery": [
+        "Code / repository content"
+      ],
+      "encoding": [],
+      "propagation": [],
+      "confirmed_models": [
+        "GitHub Copilot Chat (GPT-4)"
+      ],
+      "attack_source": "Researcher: Johann Rehberger (Embrace The Red)",
+      "vetting": "Confirmed",
+      "brief": "Crafted instructions in a source-code file made GitHub Copilot Chat emit a markdown image whose URL carried prior conversation data; when auto-rendered, the data was exfiltrated to the attacker.",
+      "atlas": [
+        "AML.T0051.001",
+        "AML.T0057"
+      ],
+      "reported": "Jun 2024",
+      "links": [
+        "https://embracethered.com/blog/posts/2024/github-copilot-chat-prompt-injection-data-exfiltration/"
+      ],
+      "sort_year": 2024,
+      "sort_month": 6,
+      "not_fully_vetted": false
+    },
+    {
+      "technique": "Morris II (self-replicating GenAI worm)",
+      "delivery": [
+        "Indirect – RAG / retrieved content",
+        "Indirect – email",
+        "Multimodal – image"
+      ],
+      "encoding": [],
+      "propagation": [
+        "Self-propagating / worm (AI-to-AI)",
+        "Poisons shared data store / RAG",
+        "Emits outbound email / message with further instructions",
+        "Cross-agent / cross-session"
+      ],
+      "confirmed_models": [
+        "Gemini Pro",
+        "ChatGPT 4.0",
+        "LLaVA"
+      ],
+      "attack_source": "Researcher: Stav Cohen (Technion), Ron Bitton (Intuit), Ben Nassi (Cornell Tech)",
+      "vetting": "Confirmed",
+      "brief": "An \"adversarial self-replicating prompt\" makes a RAG-based GenAI email assistant copy the prompt into its own output and deliver it to further agents, triggering a worm-like cascade of indirect prompt injections that spams and exfiltrates data. Demonstrated with text and image payloads.",
+      "atlas": [
+        "AML.T0051.001"
+      ],
+      "reported": "Mar 2024",
+      "links": [
+        "https://arxiv.org/abs/2403.02817"
+      ],
+      "sort_year": 2024,
+      "sort_month": 3,
+      "not_fully_vetted": false
+    },
+    {
+      "technique": "Hidden prompt injection against Claude (Unicode tags)",
+      "delivery": [
+        "Direct prompt"
+      ],
+      "encoding": [
+        "Unicode tag characters (invisible)"
+      ],
+      "propagation": [],
+      "confirmed_models": [
+        "Anthropic Claude"
+      ],
+      "attack_source": "Researcher: Johann Rehberger (Embrace The Red)",
+      "vetting": "Confirmed",
+      "brief": "Claude interpreted invisible Unicode tag code points pasted into its interface — the same hidden-instruction behavior shown against ChatGPT. Anthropic reviewed and marked it \"Not Applicable\" (no identified security impact), but the interpretation behavior was demonstrated.",
+      "atlas": [
+        "AML.T0051.000",
+        "AML.T0068"
+      ],
+      "reported": "Feb 2024",
+      "links": [
+        "https://embracethered.com/blog/posts/2024/claude-hidden-prompt-injection-ascii-smuggling/"
+      ],
+      "sort_year": 2024,
+      "sort_month": 2,
+      "not_fully_vetted": false
+    },
+    {
+      "technique": "ASCII smuggling / invisible Unicode tags (foundational)",
+      "delivery": [
+        "Indirect – website / HTML",
+        "Indirect – document / file",
+        "Direct prompt"
+      ],
+      "encoding": [
+        "Unicode tag characters (invisible)"
+      ],
+      "propagation": [],
+      "confirmed_models": [
+        "ChatGPT (GPT-4 / DALL·E)"
+      ],
+      "attack_source": "Researcher: Johann Rehberger (Embrace The Red)",
+      "vetting": "Confirmed",
+      "brief": "Foundational writeup and \"ASCII Smuggler\" tool: Unicode Tags-block code points (U+E0000 range) mirror ASCII but render invisibly, while LLMs still interpret them; hidden instructions caused ChatGPT to invoke DALL·E. Basis for the whole invisible-injection class.",
+      "atlas": [
+        "AML.T0051",
+        "AML.T0068"
+      ],
+      "reported": "Jan 2024",
+      "links": [
+        "https://embracethered.com/blog/posts/2024/hiding-and-finding-text-with-unicode-tags/"
+      ],
+      "sort_year": 2024,
+      "sort_month": 1,
+      "not_fully_vetted": false
+    },
+    {
+      "technique": "DPD support chatbot override",
+      "delivery": [
+        "Direct prompt"
+      ],
+      "encoding": [],
+      "propagation": [],
+      "confirmed_models": [],
+      "attack_source": "In-the-wild: Ashley Beauchamp",
+      "vetting": "Confirmed",
+      "brief": "A customer instructed DPD's support chatbot to disregard its rules, making it swear and write a poem disparaging DPD — direct instruction override; DPD disabled the bot the same day. Underlying model not disclosed. (User-driven manipulation of the bot they were chatting with; no third-party victim or exfiltration.)",
+      "atlas": [
+        "AML.T0051.000",
+        "AML.T0054"
+      ],
+      "reported": "Jan 2024",
+      "links": [
+        "https://www.theregister.com/2024/01/23/dpd_chatbot_goes_rogue"
+      ],
+      "sort_year": 2024,
+      "sort_month": 1,
+      "not_fully_vetted": false
+    },
+    {
+      "technique": "Chevrolet dealership chatbot override (\"$1 Tahoe\")",
+      "delivery": [
+        "Direct prompt"
+      ],
+      "encoding": [],
+      "propagation": [],
+      "confirmed_models": [
+        "ChatGPT-based dealership assistant"
+      ],
+      "attack_source": "In-the-wild: Chris Bakke",
+      "vetting": "Confirmed",
+      "brief": "A user injected instructions making a Chevrolet dealership's ChatGPT-based website assistant \"agree\" to sell a 2024 Tahoe for $1 and call it legally binding — classic direct instruction override (non-binding in reality; user-driven, no third-party victim).",
+      "atlas": [
+        "AML.T0051.000"
+      ],
+      "reported": "Dec 2023",
+      "links": [
+        "https://the-decoder.com/people-buy-brand-new-chevrolets-for-1-from-a-chatgpt-chatbot/"
+      ],
+      "sort_year": 2023,
+      "sort_month": 12,
+      "not_fully_vetted": false
+    },
+    {
+      "technique": "Google Bard markdown-image exfiltration",
+      "delivery": [
+        "Indirect – document / file",
+        "Indirect – email"
+      ],
+      "encoding": [],
+      "propagation": [],
+      "confirmed_models": [
+        "Google Bard"
+      ],
+      "attack_source": "Researcher: Johann Rehberger (Embrace The Red)",
+      "vetting": "Confirmed",
+      "brief": "An indirect prompt injection in a shared Google Doc made Bard emit a markdown image whose URL embedded the user's chat data; the client auto-loaded the image, exfiltrating data with no user interaction. One of the first zero-click LLM exfiltration cases; fixed Oct 2023.",
+      "atlas": [
+        "AML.T0051.001",
+        "AML.T0057"
+      ],
+      "reported": "Nov 2023",
+      "links": [
+        "https://embracethered.com/blog/posts/2023/google-bard-data-exfiltration/"
+      ],
+      "sort_year": 2023,
+      "sort_month": 11,
+      "not_fully_vetted": false
+    },
+    {
+      "technique": "Multimodal image prompt injection (GPT-4V)",
+      "delivery": [
+        "Multimodal – image"
+      ],
+      "encoding": [],
+      "propagation": [],
+      "confirmed_models": [
+        "GPT-4V"
+      ],
+      "attack_source": "Researcher: Riley Goodside (via Simon Willison)",
+      "vetting": "Confirmed",
+      "brief": "An image that looks blank carries instructions in off-white text on a white background; GPT-4V's OCR reads and follows them (Goodside's demo made the model suppress its description and advertise a fake sale). Early multimodal prompt injection.",
+      "atlas": [
+        "AML.T0051.001"
+      ],
+      "reported": "Oct 2023",
+      "links": [
+        "https://simonwillison.net/2023/Oct/14/multi-modal-prompt-injection/"
+      ],
+      "sort_year": 2023,
+      "sort_month": 10,
+      "not_fully_vetted": false
+    },
+    {
+      "technique": "Base64 encoded-prompt jailbreak",
+      "delivery": [
+        "Direct prompt"
+      ],
+      "encoding": [
+        "Base64",
+        "Multi-layer"
+      ],
+      "propagation": [],
+      "confirmed_models": [
+        "GPT-4",
+        "Claude v1.3",
+        "GPT-3.5 Turbo"
+      ],
+      "attack_source": "Researcher: Wei, Haghtalab, Steinhardt (UC Berkeley)",
+      "vetting": "Confirmed",
+      "brief": "Encoding a forbidden request in Base64 exploits \"mismatched generalization\" — models learn to decode Base64 in pretraining but safety training never covered such inputs — bypassing guardrails; combination attacks reached ~94% success on GPT-4. Published Jul 2023, just before the 2-year window; canonical primary source for encoded-payload jailbreaks.",
+      "atlas": [
+        "AML.T0054",
+        "AML.T0068",
+        "AML.T0051.000"
+      ],
+      "reported": "Jul 2023",
+      "links": [
+        "https://arxiv.org/abs/2307.02483"
+      ],
+      "sort_year": 2023,
+      "sort_month": 7,
+      "not_fully_vetted": false
+    }
+  ]
+}

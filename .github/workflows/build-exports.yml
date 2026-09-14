@@ -1,0 +1,43 @@
+name: Build derived exports (STIX + interactive dashboard)
+
+# Regenerates index.html, tracker.json, and the STIX 2.1 bundle from README.MD
+# whenever the source of truth changes. The generator is deterministic, so this
+# only ever commits when content actually changed. [skip ci] prevents a loop.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'README.MD'
+      - 'Sources.md'
+      - 'tools/build_exports.py'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-exports
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Regenerate exports
+        run: python tools/build_exports.py
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html tracker.json stix/prompt-injection-stix2.1.json
+          if git diff --staged --quiet; then
+            echo "No export changes."
+          else
+            git commit -m "chore: regenerate STIX 2.1 + dashboard from README [skip ci]"
+            git push
+          fi

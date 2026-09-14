@@ -1,0 +1,21 @@
+# The public repo tracks ONLY the tracker + generator + workflow.
+# The research/sweep tooling and local scratch stay out.
+
+# Local Claude Code config + sweep skill (not part of the published tracker)
+.claude/
+.mcp.json
+
+# Perplexity sweep intermediates and drafts
+candidates*.json
+proposed-update-*.md
+date-backfill-audit-*.md
+candidates-*.md
+
+# Python
+__pycache__/
+*.pyc
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
