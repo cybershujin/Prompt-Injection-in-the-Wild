@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Browse the tracker dashboard
+    url: https://cybershujin.github.io/Prompt-Injection-in-the-Wild/
+    about: Search and filter existing entries before submitting (check it isn't already tracked).

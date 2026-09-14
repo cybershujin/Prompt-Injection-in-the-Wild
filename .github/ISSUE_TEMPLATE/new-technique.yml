@@ -1,0 +1,137 @@
+name: "Submit a prompt-injection technique"
+description: "Report a publicly documented prompt-injection technique for the tracker."
+title: "[Technique] <short name>"
+labels: ["new-technique"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for contributing! A few ground rules so the tracker stays trustworthy:
+        - **Never guess.** Fill a field only if the cited source explicitly states it. **Leave anything the source doesn't state blank** — a blank means "not stated," not "none."
+        - **One source per submission.** Link the *primary* report (the researcher/vendor who found it), not a news re-write of it.
+        - It's completely fine to leave optional fields blank. Honest gaps beat guesses.
+  - type: input
+    id: technique
+    attributes:
+      label: Technique name
+      description: A short, specific name for the technique.
+      placeholder: e.g. "EchoLeak (M365 Copilot zero-click)"
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Reporting source URL
+      description: Link to the primary report.
+      placeholder: https://...
+    validations:
+      required: true
+  - type: dropdown
+    id: evidence
+    attributes:
+      label: Evidence class
+      description: "In-the-wild = observed real-world abuse / a real incident. A researcher PoC — even with a CVE and a vendor fix — is Research / red-team unless real-world abuse was observed."
+      options:
+        - "In-the-wild (observed real-world abuse / real incident)"
+        - "Research / red-team (PoC or responsible disclosure)"
+        - "Vendor advisory"
+        - "Unclear"
+    validations:
+      required: true
+  - type: dropdown
+    id: delivery
+    attributes:
+      label: Delivery method
+      description: How the injected instructions reach the model (pick all that apply).
+      multiple: true
+      options:
+        - "Direct prompt"
+        - "Indirect – website / HTML"
+        - "Indirect – document / file"
+        - "Indirect – email"
+        - "Indirect – RAG / retrieved content"
+        - "Tool-call / function result"
+        - "MCP server / connection"
+        - "Multimodal – image"
+        - "Multimodal – audio"
+        - "Code / repository content"
+        - "Calendar / invite"
+        - "Other / not listed (describe in Brief)"
+    validations:
+      required: true
+  - type: dropdown
+    id: encoding
+    attributes:
+      label: Encoding / obfuscation
+      description: Any obfuscation of the payload. Leave as "Not stated" if the source doesn't say; "None" only if it's confirmed plain text.
+      multiple: true
+      options:
+        - "None / plain text"
+        - "Not stated"
+        - "Base64"
+        - "Hex"
+        - "ROT13"
+        - "Leetspeak"
+        - "Unicode tag characters (invisible)"
+        - "Zero-width characters"
+        - "Homoglyphs"
+        - "Emoji / variation-selector smuggling"
+        - "HTML / Markdown comment"
+        - "Metadata / EXIF"
+        - "Multi-layer"
+        - "Other / not listed (describe in Brief)"
+  - type: dropdown
+    id: propagation
+    attributes:
+      label: Propagation behavior
+      description: Whether it spreads or persists. Leave as "None reported" if the source describes no propagation.
+      multiple: true
+      options:
+        - "None reported"
+        - "Self-propagating / worm (AI-to-AI)"
+        - "Persists in agent / project memory"
+        - "Spreads via MCP to connectors"
+        - "Moves through tool-call chain"
+        - "Emits outbound email / message with further instructions"
+        - "Poisons shared data store / RAG"
+        - "Spreads via shared config / rules files"
+        - "Cross-agent / cross-session"
+        - "Other / not listed (describe in Brief)"
+  - type: input
+    id: models
+    attributes:
+      label: Confirmed models
+      description: Models/products the source explicitly confirms it worked against, separated by "; ". Leave blank if the source names none.
+      placeholder: e.g. "Microsoft 365 Copilot; GPT-4o"
+  - type: input
+    id: attack_source
+    attributes:
+      label: Attack source
+      description: Who originated/demonstrated it.
+      placeholder: 'e.g. "Researcher: Jane Doe (Acme)" / "Red team: Acme" / "In-the-wild: <actor>"'
+  - type: input
+    id: reported
+    attributes:
+      label: Reported (month + year)
+      description: Publication date of the primary source, as "Mon YYYY". Leave blank if unknown.
+      placeholder: e.g. "Jun 2025"
+  - type: input
+    id: atlas
+    attributes:
+      label: MITRE ATLAS ID(s)
+      description: Optional. If you know the mapping (e.g. AML.T0051.001). We validate these; leave blank if unsure.
+      placeholder: e.g. "AML.T0051.001; AML.T0057"
+  - type: textarea
+    id: brief
+    attributes:
+      label: Brief
+      description: 1–3 sentences on what the injection does and its effect.
+    validations:
+      required: true
+  - type: checkboxes
+    id: attestation
+    attributes:
+      label: Attestation
+      options:
+        - label: "Every field I filled is explicitly supported by the linked source. I left blank anything the source does not state (no guessing)."
+          required: true

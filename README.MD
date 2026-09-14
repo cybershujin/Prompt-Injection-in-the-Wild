@@ -135,4 +135,4 @@ Techniques are tagged with [MITRE ATLAS](https://atlas.mitre.org/) technique IDs
 
 ---
 
-*Contributions: open an issue or PR. Every proposed row must cite an explicit source for each non-blank field; unclear entries are marked "Not fully vetted" rather than dropped.*
+*Contributions welcome — see [CONTRIBUTING.md](CONTRIBUTING.md), or [submit a technique](../../issues/new?template=new-technique.yml) directly. Every proposed row must cite an explicit source for each non-blank field; unclear entries are marked "Not fully vetted" rather than dropped.*
