@@ -132,7 +132,7 @@ def _links(v: str) -> list[str]:
 
 
 COLUMNS = ["technique", "delivery", "encoding", "propagation", "confirmed_models",
-           "attack_source", "vetting", "brief", "atlas", "reported", "link"]
+           "attack_source", "evidence", "vetting", "brief", "atlas", "reported", "link"]
 
 
 def parse_main_table(md: str) -> list[dict]:
@@ -159,6 +159,7 @@ def parse_main_table(md: str) -> list[dict]:
             "propagation": _multi(raw["propagation"]),
             "confirmed_models": _multi(raw["confirmed_models"]),
             "attack_source": _clean(raw["attack_source"]),
+            "evidence": _clean(raw["evidence"]) or "Unclear",
             "vetting": _clean(raw["vetting"]) or "Not fully vetted",
             "brief": _clean(raw["brief"]),
             "atlas": ATLAS_RE.findall(raw["atlas"]),
@@ -229,6 +230,7 @@ def build_tracker_json(entries, vocab):
         "encoding": sorted({v for e in entries for v in e["encoding"]}),
         "propagation": sorted({v for e in entries for v in e["propagation"]}),
         "confirmed_models": sorted({v for e in entries for v in e["confirmed_models"]}),
+        "evidence": sorted({e["evidence"] for e in entries}),
         "vetting": sorted({e["vetting"] for e in entries}),
     }
     return {
@@ -279,6 +281,7 @@ def build_stix(entries):
             "description": e["brief"] or e["technique"],
             "external_references": ext_refs,
             "x_pi_vetting": e["vetting"],
+            "x_pi_evidence_class": e["evidence"],
             "confidence": 15 if e["vetting"].lower().startswith("not") else 85,
         }
         if e["delivery"]:
@@ -355,6 +358,10 @@ td.tech{font-weight:600;min-width:160px}
 .pill{display:inline-block;border-radius:999px;padding:1px 8px;font-size:11px;font-weight:600;white-space:nowrap}
 .pill.nv{background:var(--warnbg);color:var(--warn);border:1px solid #4a3410}
 .pill.ok{background:#10241a;color:#3ad07a;border:1px solid #16402a}
+.pill.wild{background:#2a1410;color:#ff7a59;border:1px solid #4a1e12}
+.pill.research{background:#101d2a;color:#5cc8ff;border:1px solid #16324a}
+.pill.vendor{background:#191026;color:#c08cff;border:1px solid #34204a}
+.pill.unclear{background:#1a1d24;color:#8ea0b8;border:1px solid #2a3140}
 .mut{color:var(--mut)}
 .brief{max-width:420px}
 .brief.clip{max-height:3.1em;overflow:hidden}
@@ -373,6 +380,7 @@ footer{color:var(--mut);font-size:12px;padding:18px 24px;border-top:1px solid va
 <select id="fDelivery"></select>
 <select id="fEncoding"></select>
 <select id="fProp"></select>
+<select id="fEvidence"><option value="">All evidence</option><option>In-the-wild</option><option>Research / red-team</option><option>Vendor advisory</option><option>Unclear</option></select>
 <select id="fVet"><option value="">All vetting</option><option>Confirmed</option><option>Not fully vetted</option></select>
 <button id="colsBtn">Columns ▾</button>
 <span class="count" id="count"></span>
@@ -391,6 +399,7 @@ const COLS = [
  {k:"propagation",label:"Propagation",on:1,arr:1},
  {k:"confirmed_models",label:"Confirmed Models",on:1,arr:1},
  {k:"attack_source",label:"Attack Source",on:1},
+ {k:"evidence",label:"Evidence",on:1},
  {k:"vetting",label:"Vetting",on:1},
  {k:"brief",label:"Brief",on:1},
  {k:"atlas",label:"ATLAS",on:0,arr:1},
@@ -418,6 +427,7 @@ $("#cols").addEventListener("change",e=>{COLS[e.target.dataset.i].on=e.target.ch
 function cell(c,e){
  const v=e[c.k];
  if(c.k==="links"){const a=(v||[]);return a.length?'<span class="src">'+a.map((u,i)=>'<a href="'+esc(u)+'" target="_blank" rel="noopener">['+(i+1)+']</a>').join('')+'</span>':EM;}
+ if(c.k==="evidence"){const m={"In-the-wild":"wild","Research / red-team":"research","Vendor advisory":"vendor"};return v?'<span class="pill '+(m[v]||"unclear")+'">'+esc(v)+'</span>':EM;}
  if(c.k==="vetting"){const nv=/^not/i.test(v);return '<span class="pill '+(nv?"nv":"ok")+'">'+esc(nv?"Not fully vetted":"Confirmed")+'</span>';}
  if(c.k==="brief"){if(!v)return EM;const id="b"+e._i;return '<div class="brief clip" id="'+id+'">'+linkify(v)+'</div><span class="more" data-b="'+id+'">more ▾</span>';}
  if(c.arr){const a=(v||[]);return a.length?a.map(x=>'<span class="chip">'+esc(x)+'</span>').join(''):EM;}
@@ -427,7 +437,7 @@ function linkify(s){return esc(s).replace(/\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g,
 
 function render(){
  const q=$("#q").value.trim().toLowerCase();
- const fd=$("#fDelivery").value,fe=$("#fEncoding").value,fp=$("#fProp").value,fv=$("#fVet").value;
+ const fd=$("#fDelivery").value,fe=$("#fEncoding").value,fp=$("#fProp").value,fev=$("#fEvidence").value,fv=$("#fVet").value;
  const show=COLS.filter(c=>c.on);
  $("#t").querySelector("thead").innerHTML="<tr>"+show.map(c=>'<th data-k="'+c.k+'">'+esc(c.label)+' <span class="ar">'+(sortK===c.k?(sortDir<0?"▼":"▲"):"")+'</span></th>').join('')+"</tr>";
  let rows=DATA.map((e,i)=>({...e,_i:i}));
@@ -435,6 +445,7 @@ function render(){
    if(fd&&!(e.delivery||[]).includes(fd))return false;
    if(fe&&!(e.encoding||[]).includes(fe))return false;
    if(fp&&!(e.propagation||[]).includes(fp))return false;
+   if(fev&&e.evidence!==fev)return false;
    if(fv&&e.vetting!==fv)return false;
    if(q){const hay=JSON.stringify(e).toLowerCase();if(!hay.includes(q))return false;}
    return true;
@@ -453,7 +464,7 @@ function render(){
  document.querySelectorAll("th").forEach(th=>th.onclick=()=>{const k=th.dataset.k;if(sortK===k)sortDir*=-1;else{sortK=k;sortDir=1;}render();});
  document.querySelectorAll(".more").forEach(m=>m.onclick=()=>{const el=document.getElementById(m.dataset.b);el.classList.toggle("clip");m.textContent=el.classList.contains("clip")?"more ▾":"less ▲";});
 }
-["#q","#fDelivery","#fEncoding","#fProp","#fVet"].forEach(s=>$(s).addEventListener("input",render));
+["#q","#fDelivery","#fEncoding","#fProp","#fEvidence","#fVet"].forEach(s=>$(s).addEventListener("input",render));
 $("#foot").innerHTML=DATA.length+" techniques · generated from README.MD · auto-updated on each commit · "+esc(GENSTAMP);
 render();
 </script>

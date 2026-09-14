@@ -22,6 +22,7 @@
         }
       ],
       "x_pi_vetting": "Not fully vetted",
+      "x_pi_evidence_class": "In-the-wild",
       "confidence": 15,
       "x_pi_delivery_method": [
         "Code / repository content"
@@ -55,6 +56,7 @@
         }
       ],
       "x_pi_vetting": "Confirmed",
+      "x_pi_evidence_class": "Research / red-team",
       "confidence": 85,
       "x_pi_delivery_method": [
         "Indirect – document / file"
@@ -92,6 +94,7 @@
         }
       ],
       "x_pi_vetting": "Confirmed",
+      "x_pi_evidence_class": "Research / red-team",
       "confidence": 85,
       "x_pi_delivery_method": [
         "Code / repository content"
@@ -133,6 +136,7 @@
         }
       ],
       "x_pi_vetting": "Confirmed",
+      "x_pi_evidence_class": "Research / red-team",
       "confidence": 85,
       "x_pi_delivery_method": [
         "MCP server / connection"
@@ -166,6 +170,7 @@
         }
       ],
       "x_pi_vetting": "Confirmed",
+      "x_pi_evidence_class": "Research / red-team",
       "confidence": 85,
       "x_pi_delivery_method": [
         "Direct prompt",
@@ -200,6 +205,7 @@
         }
       ],
       "x_pi_vetting": "Confirmed",
+      "x_pi_evidence_class": "Research / red-team",
       "confidence": 85,
       "x_pi_delivery_method": [
         "Direct prompt"
@@ -236,6 +242,7 @@
         }
       ],
       "x_pi_vetting": "Not fully vetted",
+      "x_pi_evidence_class": "Research / red-team",
       "confidence": 15,
       "x_pi_delivery_method": [
         "Tool-call / function result"
@@ -272,6 +279,7 @@
         }
       ],
       "x_pi_vetting": "Confirmed",
+      "x_pi_evidence_class": "Research / red-team",
       "confidence": 85,
       "x_pi_delivery_method": [
         "Indirect – document / file",
@@ -306,6 +314,7 @@
         }
       ],
       "x_pi_vetting": "Confirmed",
+      "x_pi_evidence_class": "Research / red-team",
       "confidence": 85,
       "x_pi_delivery_method": [
         "Direct prompt"
@@ -349,6 +358,7 @@
         }
       ],
       "x_pi_vetting": "Confirmed",
+      "x_pi_evidence_class": "Research / red-team",
       "confidence": 85,
       "x_pi_delivery_method": [
         "Multimodal – image"
@@ -384,6 +394,7 @@
         }
       ],
       "x_pi_vetting": "Confirmed",
+      "x_pi_evidence_class": "Research / red-team",
       "confidence": 85,
       "x_pi_delivery_method": [
         "Indirect – website / HTML",
@@ -422,6 +433,7 @@
         }
       ],
       "x_pi_vetting": "Confirmed",
+      "x_pi_evidence_class": "Research / red-team",
       "confidence": 85,
       "x_pi_delivery_method": [
         "Indirect – RAG / retrieved content"
@@ -458,6 +470,7 @@
         }
       ],
       "x_pi_vetting": "Confirmed",
+      "x_pi_evidence_class": "Research / red-team",
       "confidence": 85,
       "x_pi_delivery_method": [
         "Indirect – website / HTML"
@@ -501,6 +514,7 @@
         }
       ],
       "x_pi_vetting": "Confirmed",
+      "x_pi_evidence_class": "Research / red-team",
       "confidence": 85,
       "x_pi_delivery_method": [
         "Indirect – email",
@@ -541,6 +555,7 @@
         }
       ],
       "x_pi_vetting": "Confirmed",
+      "x_pi_evidence_class": "Research / red-team",
       "confidence": 85,
       "x_pi_delivery_method": [
         "MCP server / connection",
@@ -580,6 +595,7 @@
         }
       ],
       "x_pi_vetting": "Confirmed",
+      "x_pi_evidence_class": "Research / red-team",
       "confidence": 85,
       "x_pi_delivery_method": [
         "Code / repository content",
@@ -622,6 +638,7 @@
         }
       ],
       "x_pi_vetting": "Confirmed",
+      "x_pi_evidence_class": "Research / red-team",
       "confidence": 85,
       "x_pi_delivery_method": [
         "Code / repository content"
@@ -658,6 +675,7 @@
         }
       ],
       "x_pi_vetting": "Confirmed",
+      "x_pi_evidence_class": "Research / red-team",
       "confidence": 85,
       "x_pi_delivery_method": [
         "Indirect – website / HTML",
@@ -696,6 +714,7 @@
         }
       ],
       "x_pi_vetting": "Confirmed",
+      "x_pi_evidence_class": "Research / red-team",
       "confidence": 85,
       "x_pi_delivery_method": [
         "Calendar / invite",
@@ -735,6 +754,7 @@
         }
       ],
       "x_pi_vetting": "Confirmed",
+      "x_pi_evidence_class": "Research / red-team",
       "confidence": 85,
       "x_pi_delivery_method": [
         "MCP server / connection"
@@ -765,6 +785,7 @@
         }
       ],
       "x_pi_vetting": "Confirmed",
+      "x_pi_evidence_class": "Research / red-team",
       "confidence": 85,
       "x_pi_delivery_method": [
         "Indirect – document / file"
@@ -798,6 +819,7 @@
         }
       ],
       "x_pi_vetting": "Confirmed",
+      "x_pi_evidence_class": "In-the-wild",
       "confidence": 85,
       "x_pi_delivery_method": [
         "Direct prompt"
@@ -823,6 +845,7 @@
         }
       ],
       "x_pi_vetting": "Confirmed",
+      "x_pi_evidence_class": "Research / red-team",
       "confidence": 85,
       "x_pi_delivery_method": [
         "Multimodal – image"
@@ -856,6 +879,7 @@
         }
       ],
       "x_pi_vetting": "Confirmed",
+      "x_pi_evidence_class": "Research / red-team",
       "confidence": 85,
       "x_pi_delivery_method": [
         "Indirect – email"
@@ -889,6 +913,7 @@
         }
       ],
       "x_pi_vetting": "Confirmed",
+      "x_pi_evidence_class": "Research / red-team",
       "confidence": 85,
       "x_pi_delivery_method": [
         "MCP server / connection"
@@ -925,6 +950,7 @@
         }
       ],
       "x_pi_vetting": "Confirmed",
+      "x_pi_evidence_class": "Research / red-team",
       "confidence": 85,
       "x_pi_delivery_method": [
         "Code / repository content"
@@ -958,6 +984,7 @@
         }
       ],
       "x_pi_vetting": "Confirmed",
+      "x_pi_evidence_class": "Research / red-team",
       "confidence": 85,
       "x_pi_delivery_method": [
         "Calendar / invite",
@@ -997,6 +1024,7 @@
         }
       ],
       "x_pi_vetting": "Confirmed",
+      "x_pi_evidence_class": "Research / red-team",
       "confidence": 85,
       "x_pi_delivery_method": [
         "Indirect – website / HTML"
@@ -1025,6 +1053,7 @@
         }
       ],
       "x_pi_vetting": "Confirmed",
+      "x_pi_evidence_class": "In-the-wild",
       "confidence": 85,
       "x_pi_delivery_method": [
         "Direct prompt"
@@ -1063,6 +1092,7 @@
         }
       ],
       "x_pi_vetting": "Confirmed",
+      "x_pi_evidence_class": "Research / red-team",
       "confidence": 85,
       "x_pi_delivery_method": [
         "Direct prompt"
@@ -1102,6 +1132,7 @@
         }
       ],
       "x_pi_vetting": "Confirmed",
+      "x_pi_evidence_class": "Research / red-team",
       "confidence": 85,
       "x_pi_delivery_method": [
         "Indirect – website / HTML",
@@ -1135,6 +1166,7 @@
         }
       ],
       "x_pi_vetting": "Confirmed",
+      "x_pi_evidence_class": "Research / red-team",
       "confidence": 85,
       "x_pi_delivery_method": [
         "Indirect – RAG / retrieved content",

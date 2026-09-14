@@ -52,3 +52,11 @@ Poisons shared data store / RAG · Cross-agent / cross-session
 ## Attack-source convention
 Prefix the Attack Source cell so origin type is legible:
 `Researcher: <name> (<org>)` · `Red team: <org>` · `In-the-wild: <actor>` · leave blank if unknown.
+
+## Evidence class (controlled) — the in-the-wild vs. research axis
+Scrutinize this against the primary source; it is independent of Vetting.
+- **In-the-wild** — the source explicitly reports observed real-world abuse or a real production incident (name it). NOT just a severe-sounding PoC.
+- **Research / red-team** — a security-researcher or red-team demonstration / responsible disclosure. A working exploit with a CVE and a vendor patch is STILL Research / red-team unless in-the-wild abuse was observed. This is the default for most prompt-injection reporting.
+- **Vendor advisory** — disclosed by the affected vendor's own security/red team.
+- **Unclear** — cannot determine from the source.
+Never upgrade a PoC to In-the-wild for impact; require an explicit real-world-abuse statement.

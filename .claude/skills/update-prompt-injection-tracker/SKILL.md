@@ -70,12 +70,13 @@ Trusted-source items are NOT gated here, but still get the same **"which fields 
 3. **Provider full-extraction trigger.** If the primary is a `frontier_provider_domains` writeup (Anthropic/OpenAI/Google/Microsoft), WebFetch it and **enumerate every technique it describes**, cross-checking each against the Stage-0 known-technique index. Record found-vs-tracked-vs-new for the PR body.
 4. **Original research / genuinely distinct technique** → Stage 3.
 
-## Stage 3 — Parse & normalize into the 11-column schema
-For each surviving item, map to: `Technique | Delivery Method | Encoding | Propagation | Confirmed Models | Attack Source | Vetting | Brief | ATLAS | Reported | Link`.
+## Stage 3 — Parse & normalize into the 12-column schema
+For each surviving item, map to: `Technique | Delivery Method | Encoding | Propagation | Confirmed Models | Attack Source | Evidence | Vetting | Brief | ATLAS | Reported | Link`.
 - **Controlled vocab.** Map Delivery/Encoding/Propagation to the README Appendix A/B/C terms (`crosswalk.md`), `; `-separated for multiples. If a report needs a genuinely new term, **add it to the appendix** in the PR and use it. **Encoding and Propagation are BLANK unless the source explicitly describes one.**
 - **Confirmed Models.** Only models the source explicitly names as confirmed-affected; `; `-separated. Blank otherwise. Never infer "probably all LLMs."
 - **Attack Source.** Use the `crosswalk.md` convention (`Researcher: … (org)` / `Red team: …` / `In-the-wild: …`). Blank if unknown.
-- **Vetting.** `Confirmed` or `Not fully vetted` from Stage 2 (trusted-source items default `Confirmed` unless their mechanism is unclear).
+- **Evidence — scrutinize the in-the-wild claim.** Set from the sweep's `evidence_class`, but VERIFY it against the primary source: use **`In-the-wild`** ONLY when the source explicitly reports observed real-world abuse or a real production incident (name the incident/actor). A working exploit demonstrated by a researcher/red team — even with a CVE and a vendor fix — is **`Research / red-team`**, NOT in-the-wild. Use **`Vendor advisory`** when the affected vendor's own security team is the discloser, and **`Unclear`** when you cannot tell. Do not upgrade a PoC to in-the-wild because it sounds severe; most entries are legitimately Research / red-team.
+- **Vetting.** `Confirmed` or `Not fully vetted` from Stage 2 (trusted-source items default `Confirmed` unless their mechanism is unclear). Evidence and Vetting are independent axes — an entry can be `Confirmed` + `Research / red-team`.
 - **ATLAS.** Validate every ID against the live ATLAS matrix this run (`crosswalk.md`). Commit only verified IDs; blank if none cleanly applies (note any coined label in the PR body).
 - **Reported.** Report **publication** month/year (`Mon YYYY`) from the primary source, with the exact quoted date + URL recorded in the PR body. If unsourced → blank. Date lookups are **best-effort and never block the PR** (one follow-up lookup max, in-line; then write blank and note it).
 - **Brief.** 1-3 sentences + inline source link; carry any bias/analyst note.
