@@ -4,6 +4,21 @@ Reporting sources cited by the [Prompt Injection in the Wild](README.MD) tracker
 
 | Report / Technique | Source | Reported | URL |
 |---|---|---|---|
+| Log-To-Leak (MCP tool-metadata exfiltration) | Yuepeng Hu, Chongyu Fan, Sirat Samyoun, Jian Du (Duke / Michigan State / TikTok) | Oct 2026 | https://arxiv.org/abs/2610.36108 |
+| Barracuda dual-target email prompt injection | Guruprasad Kenja (Barracuda) | Oct 2026 | https://blog.barracuda.com/2026/10/07/email-attacks-target-both-humans-ai-assistants |
+| CoSnitch (Microsoft Copilot Personal) | Lior Adar (Varonis Threat Labs) | Aug 2026 | https://www.varonis.com/blog/cosnitch |
+| Court filing prompt injection (Elliott v. New York Bariatric Group) | Matthew Elliott (self-represented plaintiff); case reporting via bestlawfirms.com | Aug 2026 | https://www.bestlawfirms.com/articles/the-first-documented-prompt-injection-attack/8290 |
+| Indirect prompt injection via malicious CV documents | Alfredo Milani, Valentina Franzoni, Emanuele Florindi (University of Perugia) | Jun 2026 | https://doi.org/10.1007/s00521-026-12266-x |
+| Memory poisoning via agent write channels (OpenClaw / HERMES) | Pritam Dash, Tongyu Ge, Aditi Jain, Tanmay Shah, Zhiwei Shang (Huawei Canada / U. Waterloo) | Jun 2026 | https://arxiv.org/abs/2606.04329 |
+| SearchLeak (Microsoft 365 Copilot Enterprise Search) | Dolev Taler (Varonis Threat Labs) | Jun 2026 | https://www.varonis.com/blog/searchleak |
+| Fake Context Alignment (Gemini notification injection) | Or Yair (SafeBreach Labs) | Jun 2026 | https://safebreach.com/blog/gemini-voice-assistant-prompt-injection-exploit |
+| CoT Forgery (Prompt Injection as Role Confusion) | Charles Ye, Jasmine Cui, Dylan Hadfield-Menell | Feb 2026 | https://arxiv.org/abs/2603.12277 |
+| LLM ranker decision hijacking (objective & criteria) | Yu Yin, Shuai Wang, Bevan Koopman, Guido Zuccon | Feb 2026 | https://arxiv.org/abs/2602.16752 |
+| ChatGPT Atlas clipboard injection (Pliny the Liberator) | Pliny the Liberator (@elder_plinius); reporting via Android Authority | Oct 2025 | https://www.androidauthority.com/openai-atlas-clipboard-injection-vulnerability-3609982/ |
+| HiddenLayer Guardrails bypass ("Same Model, Different Hat") | HiddenLayer | Oct 2025 | https://hiddenlayer.com/innovation-hub/same-model-different-hat |
+| Unit 42 long-term memory poisoning (forged conversation tags) | Royce Lu, Jay Chen (Unit 42, Palo Alto Networks) | Oct 2025 | https://unit42.paloaltonetworks.com/indirect-prompt-injection-poisons-ai-longterm-memory/ |
+| Controlled-release prompting | Jaiden Fairoze, Sanjam Garg, Keewoo Lee, Mingyuan Wang | Oct 2025 | https://arxiv.org/abs/2510.01529 |
+| Gemini Workspace hidden white-text email injection | Marco Figueroa (Mozilla 0DIN) | Jul 2025 | https://www.0din.ai/blog/phishing-for-gemini |
 | ASCII smuggling across LLMs (FireTail) | Viktor Markopoulos (FireTail) | Oct 2025 | https://www.firetail.ai/blog/ghosts-in-the-machine-ascii-smuggling-across-various-llms |
 | CamoLeak (GitHub Copilot Chat) | Omer Mayraz (Legit Security) | Oct 2025 | https://www.legitsecurity.com/blog/camoleak-critical-github-copilot-vulnerability-leaks-private-source-code |
 | ChatGPT Atlas omnibox injection | NeuralTrust | Oct 2025 | https://neuraltrust.ai/blog/openai-atlas-omnibox-prompt-injection |
